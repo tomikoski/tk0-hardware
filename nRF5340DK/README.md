@@ -30,11 +30,9 @@ west build -b nrf5340dk_nrf5340_cpuapp
 west flash --erase
 ```
 
-Open terminal outputs - one for app and one for net:
+Open terminal outputs - one for app (ttyACM2) and one for net (ttyACM0):
 ```bash
-# net
-screen /dev/ttyACM0
-# app
+screen /dev/ttyACM0 
 screen /dev/ttyACM2
 ```
 
