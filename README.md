@@ -1,4 +1,4 @@
 # Hardware playground
 
-## nRF5430DK (Nordic Semi dev kit)
-Plaything #1
+## nRF5340DK (Nordic Semi dev kit)
+https://www.nordicsemi.com/Products/Development-hardware/nRF5340-DK
