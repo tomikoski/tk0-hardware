@@ -1,2 +1,4 @@
-# tk0-hardware
-Hardware playground
+# Hardware playground
+
+## nRF5430DK (Nordic Semi dev kit)
+Plaything #1
