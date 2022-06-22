@@ -17,7 +17,7 @@
 1. Install Segger J-Link: https://developer.nordicsemi.com/nRF_Connect_SDK/doc/2.0.0/zephyr/develop/flash_debug/nordic_segger.html
 
 ## Application and add-ons
-<img src="nrf-connect-app.png" width="%50" height="%50">
+<img src="nrf-connect-app.png" style="width: 50%; height: %50">
 
 ## Building sample 'multicore'
 Uses  `nrf5340dk_nrf5340_cpuapp` (application core, app) and `nrf5340dk_nrf5340_cpunet` (network core, net)
