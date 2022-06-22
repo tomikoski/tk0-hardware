@@ -16,6 +16,9 @@
 1. Install commmand-line utils: https://www.nordicsemi.com/Products/Development-tools/nrf-command-line-tools
 1. Install Segger J-Link: https://developer.nordicsemi.com/nRF_Connect_SDK/doc/2.0.0/zephyr/develop/flash_debug/nordic_segger.html
 
+## Application and add-ons
+![](nrf-connect-app.png "Application with add-ons") 
+
 ## Building sample 'multicore'
 Uses  `nrf5340dk_nrf5340_cpuapp` (application core, app) and `nrf5340dk_nrf5340_cpunet` (network core, net)
 
