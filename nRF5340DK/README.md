@@ -1,4 +1,4 @@
-# nRF5430DK
+# nRF5340DK
 * https://www.nordicsemi.com/Products/Development-hardware/nRF5340-DK
 
 ## Documents
@@ -23,7 +23,7 @@ Compile and flash:
 
 ```bash
 source <python env>/bin/activate
-cd $SDK_HOME/ncs/nrf/samples/nrf5430/multicore
+cd $SDK_HOME/ncs/nrf/samples/nrf5340/multicore
 
 # multicore target (app + net)
 west build -b nrf5340dk_nrf5340_cpuapp
