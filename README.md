@@ -6,5 +6,5 @@ official ref: https://www.nordicsemi.com/Products/Development-hardware/nRF5340-D
 ## [Nordic Thingy:52 (IoT Sensor kit)](thingy52/README.md)
 official ref: https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-52
 
-## [Nordic Thingy:53 (IoT prototyping platform](thingy53/README.md)
+## [Nordic Thingy:53 (IoT prototyping platform)](thingy53/README.md)
 official ref: https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-53
