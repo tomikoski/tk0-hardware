@@ -9,5 +9,5 @@ official ref: https://www.nordicsemi.com/Products/Development-hardware/Nordic-Th
 ## [Nordic Thingy:53 (IoT prototyping platform)](thingy53/README.md)
 official ref: https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-53
 
-## [Bluetooth)](bluetooth/README.md)
+## [Bluetooth](bluetooth/README.md)
 Misc stuff related to BT/BTLE hacking
