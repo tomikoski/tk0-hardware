@@ -2,6 +2,5 @@
 * https://www.nordicsemi.com/Products/Development-hardware/nrf52840-dongle
 
 ## Documents
-* SDK: ??
-* Flashing: ??
+* Getting started (SDK's etc.): https://www.nordicsemi.com/Products/Development-hardware/nrf52840-dongle
 
