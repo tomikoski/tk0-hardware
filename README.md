@@ -1,5 +1,8 @@
 # Hardware playground
 
+## Hardware SDK (for all)
+official ref: https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/index.html
+
 ## [nRF5340DK (nordic semi devkit)](nRF5340DK/README.md)
 official ref: https://www.nordicsemi.com/Products/Development-hardware/nRF5340-DK
 
