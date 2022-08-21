@@ -18,3 +18,5 @@ official ref: https://www.nordicsemi.com/Products/Development-hardware/Nordic-Th
 ## [Bluetooth](bluetooth/README.md)
 Misc stuff related to BT/BTLE hacking
 
+## Useful links
+* https://www.riverloopsecurity.com/blog/2020/03/hw-101-emmc/
