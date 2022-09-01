@@ -5,7 +5,7 @@
 
 ![st24c02-i2c.png](st24c02-i2c.png)
 
-* Just connect Arduino pins: `SDA -> chip pin5, SCL -> chip pin6` and supply voltage `3.3V -> chip pin8, GND -> chip pin4`
+* Just connect Arduino pins: `SDA pin 18 -> chip pin5, SCL pin 19 -> chip pin6` and supply voltage `3.3V -> chip pin8, GND -> chip pin4`
 * When running, should output something like:
 ```
 21:58:04.439 -> Write done
