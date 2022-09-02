@@ -22,5 +22,7 @@ Misc stuff related to BT/BTLE hacking
 Arduino UNO hacking
 
 ## Useful links
-* https://www.riverloopsecurity.com/blog/2020/03/hw-101-emmc/
-* https://research.kudelskisecurity.com/2018/12/19/ph0wn-2018-flag-digger/
+* eMMC: https://www.riverloopsecurity.com/blog/2020/03/hw-101-emmc/
+* EEPROM, SPI: https://research.kudelskisecurity.com/2018/12/19/ph0wn-2018-flag-digger/
+* flashrom: https://www.riverloopsecurity.com/blog/2021/07/flashrom/
+
