@@ -21,6 +21,9 @@ Misc stuff related to BT/BTLE hacking
 ## [Arduino](arduino/README.md)
 Arduino UNO hacking
 
+## [Silicon Labs xG24 Explorer kit](silab-xG24/README.md)
+official ref: https://www.silabs.com/development-tools/wireless/efr32xg24-explorer-kit
+
 ## Useful links
 * eMMC: https://www.riverloopsecurity.com/blog/2020/03/hw-101-emmc/
 * EEPROM, SPI: https://research.kudelskisecurity.com/2018/12/19/ph0wn-2018-flag-digger/
