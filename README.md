@@ -1,4 +1,5 @@
 # Hardware playground
+Random stuff related to hardware hacking.
 
 ## Nordic Hardware SDK (for all)
 official ref: https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/index.html
@@ -16,6 +17,9 @@ official ref: https://www.nordicsemi.com/Products/Development-hardware/Nordic-Th
 official ref: https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-53
 
 ## Other Hardware SDKs etc
+
+### [Arduino Glitching](glitching/README.md)
+Arduino NANO (or UNO) glitching
 
 ### [Arduino](arduino/README.md)
 Arduino UNO hacking
