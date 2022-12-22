@@ -20,7 +20,7 @@ Please see all theory from this excelent [NewAE Tech site](https://github.com/ne
  ![UNO](UNO.jpg "UNO")
 
 1. Once successful, one should see something like this in terminal:
-```
+ ```
 ...
 ...
 Loop 1, counter=9
@@ -48,5 +48,5 @@ Glitched! Flag {123123123}, counter=1
 Glitched! Flag {123123123}, counter=2
 Glitched! Flag {123123123}, counter=3
 Glitched! Flag {123123123}, counter=4
-```
+ ```
 1. _Please do notice_: It does take **many tries** and getting it executed using exact timing is THE tricky part! :)
