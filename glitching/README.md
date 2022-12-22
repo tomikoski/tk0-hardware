@@ -5,7 +5,7 @@ Please see all theory from this excelent [NewAE Tech site](https://github.com/ne
 
 ## preparations
 Requirements:
-* 1x Arduino Nano or 1x Arduino UNO (both or either), we'll be focusing in Arduino Nano here
+* 1x Arduino Nano or 1x Arduino UNO, we'll be focusing in Arduino Nano here
 * 1x UART capable board (BusPirate, HydraBus, USB-UART converter
 * breadboard + some jumper cables to make life easier (optional)
 
