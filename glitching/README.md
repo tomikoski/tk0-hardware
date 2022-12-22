@@ -19,7 +19,7 @@ Please see all theory from this excelent [NewAE Tech site](https://github.com/ne
  ![NANO](NANO.jpg "NANO")
  ![UNO](UNO.jpg "UNO")
 
-1. Once successful, one should see something like:
+1. Once successful, one should see something like this in terminal:
 ```
 ...
 Loop 1, counter=9
