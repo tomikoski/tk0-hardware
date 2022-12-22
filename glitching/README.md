@@ -15,7 +15,7 @@ Please see all theory from this excelent [NewAE Tech site](https://github.com/ne
 1. Flash [glitch-loop-working.ino](glitch-loop-working.ino) application into Arduino Nano
 1. Hook Arduino Nano UART TX into computers UART RX
 1. Open UART in screen, e.g. `screen /dev/ttyUSBx 9600`
-1. Start glitching as shown in this picture, according some personal research, the "hotspot's" are shown in pictures:
+1. Start glitching as shown below. According some personal research, the "hotspot's" are shown in pictures:
  ![NANO](NANO.jpg "NANO")
  ![UNO](UNO.jpg "UNO")
 
