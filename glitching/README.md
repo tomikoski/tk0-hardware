@@ -13,7 +13,10 @@ Installation steps:
 1. Flash [glitch-loop-working.ino](glitch-loop-working.ino) application into Arduino Nano
 1. Hook Arduino Nano UART TX into PC's UART RX
 1. Open UART in screen, e.g. `screen /dev/ttyUSBx 9600`
-1. Start glitching as shown in this picture, according some personal research, the "hotspot's" are shown in pictures: [NANO](NANO.jpg), [UNO](UNO.jpg)
+1. Start glitching as shown in this picture, according some personal research, the "hotspot's" are shown in pictures:
+ ![NANO](NANO.jpg "NANO")
+ ![UNO](UNO.jpg "UNO")
+
 1. Once successful, one should see something like:
 ```
 ...
