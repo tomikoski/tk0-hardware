@@ -5,7 +5,9 @@ Please see all theory from this excelent [NewAE Tech site](https://github.com/ne
 
 ## preparations
 Requirements:
-* Arduino Nano or Arduino UNO (both or either), we'll be focusing in Arduino Nano here.
+* 1x Arduino Nano or 1x Arduino UNO (both or either), we'll be focusing in Arduino Nano here
+* 1x UART capable board (BusPirate, HydraBus, USB-UART converter
+* breadboard + some jumper cables to make life easier (optional)
 
 Installation steps:
 1. Assemble PicoEMP device as instructed in [NewAE Tech site](https://github.com/newaetech/chipshouter-picoemp) and flash it using stock firmware
