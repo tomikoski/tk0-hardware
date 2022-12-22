@@ -3,13 +3,13 @@
 Here we'll glitch (do an Electromagnetic Fault Injection, EMFI) against Arduino boards as they did in [Riscure Hardware CTF 2016, Fiesta](https://pedro-javierf.github.io/devblog/rhmefaultinjection/).
 Please see all theory from this excelent [NewAE Tech site](https://github.com/newaetech/chipshouter-picoemp).
 
-## preparations
-Requirements:
+## Preparations
+### Requirements:
 * 1x Arduino Nano or 1x Arduino UNO, we'll be focusing in Arduino Nano here
 * 1x UART capable board (BusPirate, HydraBus, USB-UART converter
 * breadboard + some jumper cables to make life easier (optional)
 
-Installation steps:
+### Installation steps:
 1. Assemble PicoEMP device as instructed in [NewAE Tech site](https://github.com/newaetech/chipshouter-picoemp) and flash it using stock firmware
 1. Setup Arduino IDE, [read here](https://www.arduino.cc/en/software)
 1. Flash [glitch-loop-working.ino](glitch-loop-working.ino) application into Arduino Nano
