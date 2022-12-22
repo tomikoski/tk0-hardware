@@ -49,4 +49,6 @@ Glitched! Flag {123123123}, counter=2
 Glitched! Flag {123123123}, counter=3
 Glitched! Flag {123123123}, counter=4
  ```
-1. _Please do notice_: It does take **many tries** and getting it executed using exact timing is THE tricky part! :)
+
+## Disclaimer
+_Please do notice_: It does take **many tries** and getting it executed using exact timing is THE tricky part! :)
