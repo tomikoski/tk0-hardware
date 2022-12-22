@@ -52,3 +52,4 @@ Glitched! Flag {123123123}, counter=4
 
 ## Disclaimer
 _Please do notice_: It does take **many tries** and getting it executed using exact timing is THE tricky part! :)
+Also please observe reboots when glitching near power supply/VCC - a side-effect.
