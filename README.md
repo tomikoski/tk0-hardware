@@ -30,6 +30,9 @@ official ref: https://www.silabs.com/development-tools/wireless/efr32xg24-explor
 ### [Micro:Bit](microbit/README.md)
 official ref: https://microbit.org/
 
+### [EXPRESSIF](expressif/README.md)
+official ref: https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/get-started/index.html
+
 ## Wireless
 ### [Bluetooth](bluetooth/README.md)
 Misc stuff related to BT/BTLE hacking
