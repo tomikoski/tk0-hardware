@@ -33,6 +33,9 @@ official ref: https://microbit.org/
 ### [EXPRESSIF](expressif/README.md)
 official ref: https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/get-started/index.html
 
+### [FlashcatUSB](flashcatusb/README.md)
+official ref: https://flashcatusb.com/
+
 ## Wireless
 ### [Bluetooth](bluetooth/README.md)
 Misc stuff related to BT/BTLE hacking
