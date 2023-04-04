@@ -3,6 +3,6 @@
 * Manual: https://darkwire.app/Downloads/FlashcatUSB_Manual.pdf
 
 ## Wiring (SPI mode)
-* Snatched from 1: https://www.blackcatusb.net/index.php?threads/spi-pins-be-on-mach1.674/
-* Snatched from 2: https://imgur.com/a/I9Bmd3d#R3mzm6t
+* pic1 Snatched from: https://www.blackcatusb.net/index.php?threads/spi-pins-be-on-mach1.674/
+* pic2 Snatched from: https://imgur.com/a/I9Bmd3d#R3mzm6t
 
