@@ -116,11 +116,13 @@ work correctly for you with this flash chip. Please include the flashrom log
 file for all operations you tested (see the man page for details), and mention
 which mainboard or programmer you tested in the subject line.
 Thanks for your help!
-Reading old flash chip contents... [READ] 1% complete... [READ] 2% complete... <SNIP><SNIP> [READ] 99% complete... [READ] 100% complete... done.
+Reading old flash chip contents... [READ] 1% complete... [READ] 2% complete... 
+<SNIP><SNIP> 
+[READ] 99% complete... [READ] 100% complete... done.
 Erasing and writing flash chip... [WRITE] 100% complete... Erase/write done.
-Verifying flash... [READ] 1% complete... [READ] 2% complete... <SNIP> <SNIP> [READ] 99% complete... [READ] 100% complete... VERIFIED.
-
-
+Verifying flash... [READ] 1% complete... [READ] 2% complete... 
+<SNIP> <SNIP> 
+[READ] 99% complete... [READ] 100% complete... VERIFIED.
 ```
 
 
