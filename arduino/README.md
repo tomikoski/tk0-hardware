@@ -32,10 +32,37 @@
 21:58:04.976 -> Read done
 ```
 
+## Configure Arduino UNO as SPI programmer
+* Ref: https://tomvanveen.eu/flashing-bios-chip-arduino/
+
+```
+sudo apt install git flashrom gcc-avr binutils-avr avr-libc avrdude
+git clone --recursive https://github.com/tomvanveen/frser-duino.git
+cd frser-duino
+make ftdi 
+sudo make flash-ftdi
+```
+
+* If building above fails, modify the following (modify speed + /dev/)
+```
+--- a/Makefile
++++ b/Makefile
+@@ -88,6 +88,9 @@ u2:
+ 
+ flash-u2:
+        BLBAUD=115200 SERIAL_DEV=/dev/ttyACM0 $(MAKE) program
++       
++flash-ch341:
++       BLBAUD=115200 SERIAL_DEV=/dev/ttyUSB0 $(MAKE) program
+```
+
+
+
 ## SPI (Winbond W25Q16JV)
 
 ![w25q16jv.png](images/w25q16jv.png)
 
+* Prepare Arduino as SPI programmer (see above)
 * Wiring:
 
  | winbond  | arduino  |
