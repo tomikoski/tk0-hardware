@@ -24,6 +24,9 @@ Arduino NANO (or UNO) glitching
 ### [Arduino](arduino/README.md)
 Arduino UNO hacking
 
+### [RaspberryPI](raspberrypi/README.md)
+RPi hacking
+
 ### [Silicon Labs xG24 Explorer kit](silab-xG24/README.md)
 official ref: https://www.silabs.com/development-tools/wireless/efr32xg24-explorer-kit
 
