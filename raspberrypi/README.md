@@ -11,12 +11,12 @@ Using RPi is way faster than for example Arduino. Original story: https://libreb
  |---|---|
  | 1  CS | 24/CEO   SS |
  | 2  DO | 12/MISO MISO |
- | 3  WP | NC ---- |
- | 4 GND | --  GND |
+ | 3  WP | NC |
+ | 4 GND | GND |
  | 5  DI | 21/MOSI MOSI |
  | 6 CLK | 13/SCLK  SCLK |
- | 7 RST | -- 3.3V |
- | 8 VCC | -- 3.3V |
+ | 7 RST | 3.3V |
+ | 8 VCC | 3.3V |
 
 * Flashrom
  
