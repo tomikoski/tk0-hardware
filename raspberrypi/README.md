@@ -7,7 +7,7 @@ Using RPi is way faster than for example Arduino. Original story: https://libreb
 
 * Wiring:
 
- | winbond  |   |
+ | winbond  | RaspberryPi 4B |
  |---|---|
  | 1  CS | 24/CEO   SS |
  | 2  DO | 12/MISO MISO |
