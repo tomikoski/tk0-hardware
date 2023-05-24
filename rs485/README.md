@@ -3,6 +3,8 @@
 ## Super cheap locking system using RS485
 PoC for RS485 locking system, cheapo version: https://www.aliexpress.com/item/1005003506214612.html
 
+![ref-image.jpg](images/ref-image.jpg)
+
 ## Documentation :)
 ```
 1~24 channel unlock commands corresponding to the 1st board
