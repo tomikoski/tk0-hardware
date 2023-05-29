@@ -24,3 +24,10 @@ Full open command: 8A 01 00 11 9A
 8A 01 15 11 8F Open channel 21            8A 01 16 11 8C Open channel 22
 8A 01 17 11 8D Open channel 23            8A 01 18 11 82 Open channel 24
 ```
+
+## Shell way
+Open all:
+```
+stty -F /dev/ttyUSB0 raw -echo
+echo -ne '\x8a\x01\x00\x11\x9a' > /dev/ttyUSB0
+```
