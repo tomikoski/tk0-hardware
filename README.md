@@ -43,6 +43,9 @@ official ref: https://flashcatusb.com/
 ### [Bluetooth](bluetooth/README.md)
 Misc stuff related to BT/BTLE hacking
 
+### [TP-Link Archer T4U v2 dongle](tp-link-archer/README.md)
+How to take TP-Link Archer T4U v2 [Realtek RTL8812AU] into use in Ubuntu (no official drivers published)
+
 ## Useful links
 * eMMC: https://www.riverloopsecurity.com/blog/2020/03/hw-101-emmc/
 * EEPROM, SPI: https://research.kudelskisecurity.com/2018/12/19/ph0wn-2018-flag-digger/
