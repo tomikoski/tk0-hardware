@@ -2,10 +2,9 @@
 Tested with Ubuntu 22.04
 
 ## compile drivers for linux
-Choose suitable driver from this repo - here we use:
 
 ```
-git clone https://github.com/lwfinger/rtl8812au
+git clone https://github.com/aircrack-ng/rtl8812au.git
 cd rtl8812au
 make
 sudo insmod 8812au.ko
@@ -18,5 +17,8 @@ rfkill list
 
 # sanity check
 sudo depmod 
+
+# if works, we can install it:
+sudo make dkms_install
 ```
 
