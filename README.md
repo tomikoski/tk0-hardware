@@ -46,8 +46,13 @@ Misc stuff related to BT/BTLE hacking
 ### [TP-Link Archer T4U v2 dongle](tp-link-archer/README.md)
 How to take TP-Link Archer T4U v2 [Realtek RTL8812AU] into use in Ubuntu (no official drivers published)
 
+## Cables, firmwares and stuff
+### [Tamarin cable for iOS-devices](tamarin-cable/README.md)
+How to build TAMARIN CABLE firmware from scratch
+
 ## Useful links
 * eMMC: https://www.riverloopsecurity.com/blog/2020/03/hw-101-emmc/
 * EEPROM, SPI: https://research.kudelskisecurity.com/2018/12/19/ph0wn-2018-flag-digger/
 * flashrom: https://www.riverloopsecurity.com/blog/2021/07/flashrom/
 * (SDR) Signal wiki: https://www.sigidwiki.com/wiki/Signal_Identification_Guide
+* Tamarin Cable: https://github.com/stacksmashing/tamarin-firmware/tree/main
