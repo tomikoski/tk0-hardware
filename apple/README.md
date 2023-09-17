@@ -6,13 +6,13 @@
 ![Segger pinout](https://c.a.segger.com/fileadmin/images/products/J-Link/Software/pinout-spi-20-pin.gif.webp)
 
 ## Wiring
-AirTag|Segger
-Flash VCC (TP21)|1.8V (Tigard VGT/Powersupply +)
-Flash SCLK (TP22)|pin 9 (CLK)
-Flash CS (TP23)|pin 7 (nCS)
-Flash DI (TP19)|pin 5 (DI)
-Flash DO (TP20)|pin 13 (DO)
-
+|AirTag|Segger|
+|---|---|
+|Flash VCC (TP21)|1.8V (Tigard VGT/Powersupply +)|
+|Flash SCLK (TP22)|pin 9 (CLK)|
+|Flash CS (TP23)|pin 7 (nCS)|
+|Flash DI (TP19)|pin 5 (DI)|
+|Flash DO (TP20)|pin 13 (DO)|
 
 ## Segger JLinkSPI
 
