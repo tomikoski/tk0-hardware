@@ -9,6 +9,7 @@
 |AirTag|Segger|
 |---|---|
 |Flash VCC (TP21)|1.8V (Tigard VGT/Powersupply +)|
+|Flash GND (BAT GND|any GND pin(GND)|
 |Flash SCLK (TP22)|pin 9 (CLK)|
 |Flash CS (TP23)|pin 7 (nCS)|
 |Flash DI (TP19)|pin 5 (DI)|
