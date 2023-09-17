@@ -1,8 +1,12 @@
 # Apple Stuff
 
 ## AirTag
+Based on research by Adam Catley (https://adamcatley.com/AirTag.html)
 
+### AirTag pinout
 ![AirTag research](https://raw.githubusercontent.com/colinoflynn/airtag-re/master/images/frontside-tpnames.jpg)
+
+### Segger pinout
 ![Segger pinout](https://c.a.segger.com/fileadmin/images/products/J-Link/Software/pinout-spi-20-pin.gif.webp)
 
 ## Wiring
