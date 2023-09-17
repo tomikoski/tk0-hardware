@@ -12,8 +12,8 @@ Based on research by Adam Catley (https://adamcatley.com/AirTag.html)
 ## Wiring
 |AirTag|Segger|
 |---|---|
-|Flash VCC (TP21)|1.8V (Tigard VGT/Powersupply +)|
-|Flash GND (BAT GND)|any GND pin(GND)|
+|Flash VCC (TP21)|pin 1 (VTref) _AND_ 1.8V (ext pwr +)|
+|Flash GND (BAT GND)|any GND pin(GND) _AND_ GND (ext pwr -)|
 |Flash SCLK (TP22)|pin 9 (CLK)|
 |Flash CS (TP23)|pin 7 (nCS)|
 |Flash DI (TP19)|pin 5 (DI)|
