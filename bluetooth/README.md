@@ -8,5 +8,5 @@ Bluetooth / Bluetooth Low Energy hacking
 * https://www.bluetooth.com/blog/a-new-way-to-debug-iosbluetooth-applications/
 * https://developer.apple.com/bug-reporting/profiles-and-logs/?name=bluetooth
 
-## BT5.0 for Debian
+## BT5.0 for Debian12
 `dmesg|grep Bluetooth` shows errors, then: https://linuxreviews.org/Realtek_RTL8761B
