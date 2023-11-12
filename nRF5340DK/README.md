@@ -28,8 +28,8 @@ Compile and flash:
 source <python env>/bin/activate
 cd $SDK_HOME/ncs/nrf/samples/nrf5340/multicore
 
-# multicore target (app + net), use '--sysbuild' for build all cores:
-west build -b nrf5340dk_nrf5340_cpuapp --sysbuild
+# multicore target (app + net), use '--sysbuild' for build all cores, use pristine to build every time from scratch:
+west build --pristine -b nrf5340dk_nrf5340_cpuapp --sysbuild
 
 # then erase and flash all cores (app+net)
 west flash --erase
