@@ -28,8 +28,14 @@ Compile and flash:
 source <python env>/bin/activate
 cd $SDK_HOME/ncs/nrf/samples/nrf5340/multicore
 
-# multicore target (app + net), use '--sysbuild' for flash all cores:
+# multicore target (app + net), use '--sysbuild' for build all cores:
 west build -b nrf5340dk_nrf5340_cpuapp --sysbuild
+
+# then erase and flash all cores (app+net)
+west flash --erase
+
+# do flash only app core of multicore app, use
+# west flash --domain hello_world
 ```
 
 Open terminal outputs - one for app (ttyACM2) and one for net (ttyACM0):
