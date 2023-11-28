@@ -1,0 +1,32 @@
+# HC05
+
+## Super cheap wireless UART board
+PoC for RS485 locking system, cheapo version: https://www.aliexpress.com/item/1005003506214612.html
+
+![hc05.jpg](images/hc05.jpg)
+
+## Documentation :)
+
+Insert USB-dongle and power up HC05 board. To pair (only once) and use:
+```
+bluetoothctl
+scan on
+
+# when found...
+scan off
+
+# use found MAC ADDRESS
+pair <MAC ADDRESS>
+# enter PIN 1234
+```
+
+Next setup UART for HC05:
+```
+rfcomm bind 0 <MAC ADDRESS>
+
+# should be visible in:
+ls -ltr /dev/rfcommN (N=0 useally)
+
+# connect
+picocom -b 9600 /dev/rfcommN
+```
