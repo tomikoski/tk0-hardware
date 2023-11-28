@@ -1,7 +1,7 @@
 # HC05
 
 ## Super cheap wireless UART board
-PoC for RS485 locking system, cheapo version: https://www.aliexpress.com/item/1005003506214612.html
+Testing of HC05 board, super cheap wireless serial port board
 
 ![hc05.jpg](images/hc05.jpg)
 
