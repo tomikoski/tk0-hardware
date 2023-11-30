@@ -25,7 +25,7 @@ Next setup UART for HC05:
 rfcomm bind 0 <MAC ADDRESS>
 
 # should be visible in:
-ls -ltr /dev/rfcommN (N=0 useally)
+ls -ltr /dev/rfcommN (N=0 usually)
 
 # connect
 picocom -b 9600 /dev/rfcommN
