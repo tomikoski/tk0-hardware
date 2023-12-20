@@ -1,9 +1,9 @@
 # Hardware playground
 Random stuff related to hardware hacking.
 
+
 ## Nordic Hardware SDK (for all)
 official ref: https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/index.html
-
 ### [nRF5340DK (nordic semi devkit)](nRF5340DK/README.md)
 official ref: https://www.nordicsemi.com/Products/Development-hardware/nRF5340-DK
 
@@ -16,13 +16,25 @@ official ref: https://www.nordicsemi.com/Products/Development-hardware/Nordic-Th
 ### [Nordic Thingy:53 (IoT prototyping platform)](thingy53/README.md)
 official ref: https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-53
 
-## Other Hardware SDKs etc
 
+## Other Hardware SDKs etc
 ### [Arduino Glitching](glitching/README.md)
 Arduino NANO (or UNO) glitching
 
 ### [Arduino](arduino/README.md)
 Arduino UNO hacking
+
+### [EXPRESSIF](expressif/README.md)
+official ref: https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/get-started/index.html
+
+### [FlashcatUSB](flashcatusb/README.md)
+official ref: https://flashcatusb.com/
+
+### [HydraBus](hydrabus/README.md)
+official ref: https://github.com/hydrabus
+
+### [Micro:Bit](microbit/README.md)
+official ref: https://microbit.org/
 
 ### [RaspberryPI](raspberrypi/README.md)
 RPi hacking
@@ -30,14 +42,6 @@ RPi hacking
 ### [Silicon Labs xG24 Explorer kit](silab-xG24/README.md)
 official ref: https://www.silabs.com/development-tools/wireless/efr32xg24-explorer-kit
 
-### [Micro:Bit](microbit/README.md)
-official ref: https://microbit.org/
-
-### [EXPRESSIF](expressif/README.md)
-official ref: https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/get-started/index.html
-
-### [FlashcatUSB](flashcatusb/README.md)
-official ref: https://flashcatusb.com/
 
 ## Wireless
 ### [Bluetooth](bluetooth/README.md)
