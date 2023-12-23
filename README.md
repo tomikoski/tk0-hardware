@@ -18,11 +18,14 @@ official ref: https://www.nordicsemi.com/Products/Development-hardware/Nordic-Th
 
 
 ## Other Hardware SDKs etc
-### [Arduino Glitching](glitching/README.md)
+### [Arduino Glitching](glitching/arduino/README.md)
 Arduino NANO (or UNO) glitching
 
 ### [Arduino](arduino/README.md)
 Arduino UNO hacking
+
+### [Chipwhisperer Glitching](glitching/chipwhisperer/README.md)
+Chipwhisperer NANO hacking (incl. target)
 
 ### [EXPRESSIF](expressif/README.md)
 official ref: https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/get-started/index.html
