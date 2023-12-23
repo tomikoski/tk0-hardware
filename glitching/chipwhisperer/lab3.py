@@ -6,7 +6,7 @@ import time
 scope = cw.scope()
 
 # The default settings are fine for now.
-#scope.default_setup()
+scope.default_setup()
 
 # Fetch the target from the scope
 # This should be automatically connected
