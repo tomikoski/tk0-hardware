@@ -26,8 +26,11 @@ sudo groupadd -f chipwhisperer
 sudo usermod -aG chipwhisperer $USER
 sudo usermod -aG plugdev $USER
 
+####################################
 # reboot - yes really
+####################################
 
+cd ~/git/chipwhisperer
 git submodule update --init jupyter
 
 pip install -e .
