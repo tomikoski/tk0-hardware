@@ -1,4 +1,5 @@
 # Setup chipwhisperer repos etc.
+Setup battletested with Debian12, ackward reboots ahead.
 
 ## env
 ```
@@ -24,6 +25,9 @@ sudo udevadm control --reload-rules
 sudo groupadd -f chipwhisperer
 sudo usermod -aG chipwhisperer $USER
 sudo usermod -aG plugdev $USER
+
+# reboot - yes really
+
 git submodule update --init jupyter
 
 pip install -e .
