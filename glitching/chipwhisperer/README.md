@@ -32,11 +32,12 @@ cd jupyter
 pip install nbstripout
 nbstripout --install
 
+# fix jupyter \o/
 pip uninstall traitlets
 pip install traitlets==5.9.0
 ```
 
-## run jupyter
+## run jupyter notebooks
 ```
 jupyter notebook
 ```
@@ -47,6 +48,3 @@ cd $GITROOT/hardware/victims/firmware/simpleserial-base/
 make PLATFORM=CWNANO CRYPTO_TARGET=NONE # SimpleSerial
 make PLATFORM=CWNANO CRYPTO_TARGET=NONE S_VER=SS_VER_2_1 # SimpleSerial2
 ```
-
-```
-
