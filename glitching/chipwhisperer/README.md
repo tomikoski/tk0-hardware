@@ -49,6 +49,21 @@ pip install traitlets==5.9.0
 jupyter notebook
 ```
 
+If you encounter jupyter errors like:
+```
+...
+[I 23:41:34.568 NotebookApp] [jupyter_nbextensions_configurator] enabled 0.6.3
+[W 23:41:35.043 NotebookApp] Error loading server extension panel.io.jupyter_server_extension
+    Traceback (most recent call last):
+...
+```
+
+then just (will handle deps too):
+```
+pip uninstall panel
+pip install panel
+```
+
 ## build firmwares
 ```
 cd $GITROOT/hardware/victims/firmware/simpleserial-base/
