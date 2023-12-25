@@ -75,9 +75,7 @@ target.baud = 38400
 time.sleep(0.1)
 
 def reboot_flush():
-#    print(f"IO STATE: {scope.io.pdic}") #get IO state
-#    print(f"IO NRST:  {scope.io.nrst}") #get nRST state
-    print("Reboot!!")
+    print("reboot_flush() called")
     scope.io.nrst = False
     time.sleep(0.05)
     scope.io.nrst = "high_z"
@@ -93,37 +91,21 @@ scope.glitch.clk_src = "clkgen" # set glitch input clock
 scope.glitch.output = "glitch_only" # glitch_out = clk ^ glitch
 scope.glitch.trigger_src = "ext_single" # glitch only after scope.arm() called
 
-g_step = 0.4
-if PLATFORM=="CWLITEXMEGA":
-    gc.set_range("width", 45.7, 47.8)
-    gc.set_range("offset", 2.8, 10)
-    gc.set_range("ext_offset", 2, 4)
-    scope.glitch.repeat = 10
-elif PLATFORM == "CWLITEARM":
-    #should also work for the bootloader memory dump
-    gc.set_range("width", 34.7, 36)
-    gc.set_range("offset", -41, -30)
-    gc.set_range("ext_offset", 6, 6)
-    scope.glitch.repeat = 7
-elif PLATFORM == "CW308_STM32F3":
-    #these specific settings seem to work well for some reason
-    #also works for the bootloader memory dump
-    gc.set_range("ext_offset", 9, 12)
-    gc.set_range("width", 47.6, 49.6)
-    gc.set_range("offset", -19, -21.5)
-    scope.glitch.repeat = 5
-#TOMI
-elif PLATFORM == "CWNANO":
-    scope.vglitch_setup(glitcht=None, default_setup=True) # repeat = 1 ext_offset = 0
-    gc.set_range("ext_offset", 9, 12)
-    gc.set_range("width", 47.6, 49.6)
-    gc.set_range("offset", -19, -21.5)
-    gc.set_global_step(0.4)
-    #gc.set_range("width", 34.7, 36)
-    #gc.set_range("offset", -41, -30)
-    #gc.set_range("ext_offset", 6, 6)
-    #scope.glitch.repeat = 7
-   
+
+#g_step = 0.4
+# repeat = 1, ext_offset = 0. According documentatation, sane defaults
+scope.vglitch_setup(glitcht=None, default_setup=True)
+
+#How wide to make the glitch. Can be in the range [-50, 50], though there is no reason to use widths < 0. Wider glitches more easily cause glitches, but are also more likely to crash the target, meaning we'll often want to try a range of widths when attacking a target.
+gc.set_range("width", -50.0, 50.0) # full width
+
+#Where in the output clock to place the glitch. Can be in the range [-48.8, 48.8]. Often, we'll want to try many offsets when trying to glitch a target.
+gc.set_range("offset",-48.8, 48.8) # full offset
+  
+#The number of clock cycles to repeat the glitch for. Higher values increase the number of instructions that can be glitched, but often increase the risk of crashing the target. 
+#scope.glitch.repeat = 5 #N/A for CWNANO
+
+
 if(len(sys.argv) > 1):
     print("Override REPEAT...")
     scope.glitch.repeat = int(sys.argv[1])
@@ -149,7 +131,7 @@ for glitch_setting in gc.glitch_values():
     if total_successes > MAX_SUCCESSES:
        break
 
-    print(f"WIDTH: {scope.glitch.width}, OFFSET: {scope.glitch.offset}, EXT_OFFSET: {scope.glitch.ext_offset}")
+    print("WIDTH: {}, OFFSET: {}, EXT_OFFSET: {}".format(scope.glitch.width,scope.glitch.offset,scope.glitch.ext_offset))
     target.flush()
     scope.arm()
 
@@ -159,10 +141,9 @@ for glitch_setting in gc.glitch_values():
     ret = scope.capture()
 
     if ret:
-        #print('Timeout - no trigger')
+        print('Timeout - no trigger')
         gc.add("reset")
         resets += 1
-
         #Device is slow to boot?
         reboot_flush()
 
@@ -185,8 +166,8 @@ for glitch_setting in gc.glitch_values():
     if (successes > 0):
         print("successes = {}, resets = {}, offset = {}, width = {}, ext_offset = {}".format(successes, resets, scope.glitch.offset, scope.glitch.width, scope.glitch.ext_offset))
         total_successes += successes
+
 print("Done glitching")
 print("successes = {}, resets = {}, offset = {}, width = {}, ext_offset = {}".format(successes, resets, scope.glitch.offset, scope.glitch.width, scope.glitch.ext_offset))
-
 #enable logging
 cw.set_all_log_levels(cw.logging.WARNING)

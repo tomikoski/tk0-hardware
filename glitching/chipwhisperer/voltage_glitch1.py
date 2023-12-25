@@ -76,7 +76,7 @@ time.sleep(0.1)
 def reboot_flush():
 #    print(f"IO STATE: {scope.io.pdic}") #get IO state
 #    print(f"IO NRST:  {scope.io.nrst}") #get nRST state
-    print("Reboot!!")
+    print("reboot_flush() called")
     scope.io.nrst = False
     time.sleep(0.05)
     scope.io.nrst = "high_z"
@@ -117,13 +117,27 @@ elif PLATFORM == "CWNANO":
     #gc.set_range("ext_offset", 0, 10)
     #gc.set_range("width", -50, 50)
     #gc.set_range("offset", -48.8, 48.8)
-    gc.set_range("ext_offset", 9, 12)
-    gc.set_range("width", 47.6, 49.6)
-    gc.set_range("offset", -19, -21.5)
+    #gc.set_range("ext_offset", 9, 12)
+    #gc.set_range("width", 47.6, 49.6)
+    #gc.set_range("offset", -19, -21.5)
     #gc.set_range("width", 34.7, 36)
     #gc.set_range("offset", -41, -30)
     #gc.set_range("ext_offset", 6, 6)
     #scope.glitch.repeat = 7
+
+    #g_step = 0.4
+    # repeat = 1, ext_offset = 0. According documentatation, sane defaults
+    scope.vglitch_setup(glitcht=None, default_setup=True)
+    
+    #How wide to make the glitch. Can be in the range [-50, 50], though there is no reason to use widths < 0. Wider glitches more easily cause glitches, but are also more likely to crash the target, meaning we'll often want to try a range of widths when attacking a target.
+    gc.set_range("width", -50.0, 50.0) # full width
+    
+    #Where in the output clock to place the glitch. Can be in the range [-48.8, 48.8]. Often, we'll want to try many offsets when trying to glitch a target.
+    gc.set_range("offset",-48.8, 48.8) # full offset
+      
+    #The number of clock cycles to repeat the glitch for. Higher values increase the number of instructions that can be glitched, but often increase the risk of crashing the target. 
+    #scope.glitch.repeat = 5 #N/A for CWNANO
+
    
 if(len(sys.argv) > 1):
     print("Override REPEAT...")
@@ -162,7 +176,6 @@ for glitch_setting in gc.glitch_values():
         target.write("g\n")
 
         ret = scope.capture()
-        print("ret {}".format(ret))
         val = target.simpleserial_read_witherrors('r', 4, glitch_timeout=10) #For loop check
         #print(val)
         
@@ -185,7 +198,6 @@ for glitch_setting in gc.glitch_values():
                 gc.add("reset")
                 reboot_flush()
                 resets += 1
-                print(val)
             else:
                 gcnt = struct.unpack("<I", val['payload'])[0]
 
@@ -195,7 +207,6 @@ for glitch_setting in gc.glitch_values():
                     successes += 1
                 else:
                     gc.add("normal")
-                    print("normal")
     if successes > 0:
         print("successes = {}, resets = {}, offset = {}, width = {}, ext_offset = {}".format(successes, resets, scope.glitch.offset, scope.glitch.width, scope.glitch.ext_offset))
         total_successes += successes
