@@ -44,6 +44,7 @@ try:
         scope.con()
 except NameError:
     scope = cw.scope()
+    scope.default_setup()
 
 try:
     if SS_VER == "SS_VER_2_1":
@@ -75,7 +76,7 @@ target.baud = 38400
 time.sleep(0.1)
 
 def reboot_flush():
-    print("reboot_flush() called")
+    #print("reboot_flush() called")
     scope.io.nrst = False
     time.sleep(0.05)
     scope.io.nrst = "high_z"
@@ -105,6 +106,9 @@ gc.set_range("offset",-48.8, 48.8) # full offset
 #The number of clock cycles to repeat the glitch for. Higher values increase the number of instructions that can be glitched, but often increase the risk of crashing the target. 
 #scope.glitch.repeat = 5 #N/A for CWNANO
 
+gc.set_range("width", -5, 5)
+gc.set_range("offset", -5, 5)
+gc.set_global_step([5.0, 2.5])
 
 if(len(sys.argv) > 1):
     print("Override REPEAT...")
@@ -119,6 +123,10 @@ reboot_flush()
 total_successes = 0
 successes = 0
 resets = 0
+
+# print all settings
+print(scope)
+
 for glitch_setting in gc.glitch_values():
     scope.glitch.offset = glitch_setting[1]
     scope.glitch.width = glitch_setting[0]
@@ -131,7 +139,7 @@ for glitch_setting in gc.glitch_values():
     if total_successes > MAX_SUCCESSES:
        break
 
-    print("WIDTH: {}, OFFSET: {}, EXT_OFFSET: {}".format(scope.glitch.width,scope.glitch.offset,scope.glitch.ext_offset))
+    print("WIDTH: {}, OFFSET: {}, EXT_OFFSET: {}, REPEAT {}".format(scope.glitch.width,scope.glitch.offset,scope.glitch.ext_offset,scope.glitch.repeat))
     target.flush()
     scope.arm()
 

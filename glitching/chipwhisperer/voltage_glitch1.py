@@ -43,6 +43,7 @@ try:
         scope.con()
 except NameError:
     scope = cw.scope()
+    scope.default_setup()
 
 try:
     if SS_VER == "SS_VER_2_1":
@@ -76,7 +77,7 @@ time.sleep(0.1)
 def reboot_flush():
 #    print(f"IO STATE: {scope.io.pdic}") #get IO state
 #    print(f"IO NRST:  {scope.io.nrst}") #get nRST state
-    print("reboot_flush() called")
+#    print("reboot_flush() called")
     scope.io.nrst = False
     time.sleep(0.05)
     scope.io.nrst = "high_z"
@@ -160,6 +161,10 @@ sample_size = 1
 #loff = scope.glitch.offset
 #lwid = scope.glitch.width
 total_successes = 0
+
+# print all settings
+print(scope)
+
 for glitch_setting in gc.glitch_values():
     scope.glitch.offset = glitch_setting[1]
     scope.glitch.width = glitch_setting[0]
@@ -167,7 +172,7 @@ for glitch_setting in gc.glitch_values():
     successes = 0
     resets = 0
     for i in range(10):
-        print(f"WIDTH: {scope.glitch.width}, OFFSET: {scope.glitch.offset}, EXT_OFFSET: {scope.glitch.ext_offset}")
+        print(f"WIDTH: {scope.glitch.width}, OFFSET: {scope.glitch.offset}, EXT_OFFSET: {scope.glitch.ext_offset}, REPEAT: {scope.glitch.repeat}")
         target.flush()
 
         scope.arm()
