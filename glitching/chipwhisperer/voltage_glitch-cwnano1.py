@@ -5,6 +5,7 @@ from tqdm.notebook import trange
 import struct
 import time
 import warnings
+from datetime import datetime
 
 SCOPETYPE = 'CWNANO'
 PLATFORM = 'CWNANO'
@@ -87,6 +88,7 @@ sample_size = 1
 #   count+=1
 
 all_successes = ""
+start_time = datetime.now().strftime("%H:%M:%S")
 
 for glitch_setting in gc.glitch_values():
    scope.glitch.repeat = glitch_setting[0]
@@ -129,7 +131,8 @@ for glitch_setting in gc.glitch_values():
         print("successes = {}, resets = {}, repeat = {}, ext_offset = {}".format(successes, resets, scope.glitch.repeat, scope.glitch.ext_offset))
         all_successes += "successes = {}, resets = {}, repeat = {}, ext_offset = {}\n".format(successes, resets, scope.glitch.repeat, scope.glitch.ext_offset)
 
-print("Done glitching")
+end_time = datetime.now().strftime("%H:%M:%S")
+print("Done glitching, start: {}, end: {}".format(start_time,end_time))
 print("successes = {}, resets = {}".format(successes, resets))
 if successes > 0:
    print("all_successes = {}".format(all_successes))
@@ -137,3 +140,4 @@ if successes > 0:
 scope.dis()
 target.dis()
 cw.set_all_log_levels(cw.logging.WARNING)
+
