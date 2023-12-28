@@ -30,6 +30,7 @@ sudo usermod -aG plugdev $USER
 # reboot - yes really
 ####################################
 
+source ~/pythons/chipwhisperer/bin/activate
 cd ~/git/chipwhisperer
 git submodule update --init jupyter
 
