@@ -67,6 +67,6 @@ pip install panel
 ## build firmwares
 ```
 cd $GITROOT/hardware/victims/firmware/simpleserial-base/
-make PLATFORM=CWNANO CRYPTO_TARGET=NONE # SimpleSerial
+make PLATFORM=CWNANO CRYPTO_TARGET=NONE S_VER=SS_VER_1_1 # SimpleSerial
 make PLATFORM=CWNANO CRYPTO_TARGET=NONE S_VER=SS_VER_2_1 # SimpleSerial2
 ```
