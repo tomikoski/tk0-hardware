@@ -7,12 +7,15 @@ import struct
 import time
 import warnings
 from datetime import datetime
+import sys
 
 SCOPETYPE = 'CWNANO'
 PLATFORM = 'CWNANO'
 #SS_VER = 'SS_VER_2_1'
-SS_VER = 'SS_VER_1_1'
+#SS_VER = 'SS_VER_1_1'
 
+SS_VER = sys.argv[1]
+print(SS_VER)
 
 try:
     if not scope.connectStatus:
@@ -40,18 +43,9 @@ except:
     target = cw.target(scope, target_type)
 
 print("INFO: Found ChipWhisperer😍")
-print(SS_VER)
-
-#if "STM" in PLATFORM or PLATFORM == "CWLITEARM" or PLATFORM == "CWNANO":
-#    prog = cw.programmers.STM32FProgrammer
-prog = cw.programmers.STM32FProgrammer
 
 time.sleep(0.05)
 scope.default_setup()
-
-# program device
-#fw_path = sys.argv[1]
-#cw.program_target(scope, prog, fw_path)
 
 scope.io.clkout = 7.5E6
 def reboot_flush():            
@@ -69,18 +63,32 @@ fig = plt.figure()
 
 cw.set_all_log_levels(cw.logging.CRITICAL)
 
+#ORIG
+#g_step = 1
+#gc.set_global_step(g_step)
+#gc.set_range("repeat", 1, 7)
+#gc.set_range("ext_offset", 1, 30)
+#scope.glitch.repeat = 0
+
+#FULL SCALE
+REPEAT_MIN=1
+REPEAT_MAX=10
+EXT_OFFSET_MIN=1
+EXT_OFFSET_MAX=500
+
 g_step = 1
-
 gc.set_global_step(g_step)
-gc.set_range("repeat", 1, 3)
-gc.set_range("ext_offset", 1, 50)
-
-gc.set_global_step(1)
+gc.set_range("repeat", REPEAT_MIN, REPEAT_MAX)
+gc.set_range("ext_offset", EXT_OFFSET_MIN, EXT_OFFSET_MAX)
+scope.glitch.repeat = 0
+scope.vglitch_setup(glitcht=None, default_setup=True)
 
 reboot_flush()
-sample_size = 1
-scope.glitch.repeat = 0
 broken = False
+
+print(scope)
+print("baud = {}".format(target.baud))
+print("offset: [{}-{}], repeat: [{}-{}]".format(EXT_OFFSET_MIN,EXT_OFFSET_MAX,REPEAT_MIN,REPEAT_MAX))
 
 for glitch_settings in gc.glitch_values():
     scope.glitch.repeat = glitch_settings[0]
@@ -88,9 +96,9 @@ for glitch_settings in gc.glitch_values():
     if broken:
         break
     for i in range(50):
-        print("ext_offset {}, repeat {}".format(scope.glitch.ext_offset,scope.glitch.repeat))
+        #print("ext_offset {}, repeat {}".format(scope.glitch.ext_offset,scope.glitch.repeat)) # would show "progress"
         scope.arm()
-        target.simpleserial_write('p', bytearray([0]*5))
+        target.simpleserial_write('p', bytearray([0]*5))        
         ret = scope.capture()
         
         if ret:
@@ -101,12 +109,13 @@ for glitch_settings in gc.glitch_values():
             reboot_flush()
 
         else:
-            val = target.simpleserial_read_witherrors('r', 1, glitch_timeout=10)#For loop check
-            print(val) 
+            val = target.simpleserial_read_witherrors('r', 1, glitch_timeout=10) #For loop check
+            #print(val) 
             if val['valid'] is False:
                 gc.add("reset")
                 reboot_flush()
             else:
+                #print(val) #SIMPLESERIAL1 => would print if not success: "{'valid': True, 'payload': bytearray(b'\x00'), 'full_response': 'r00\n', 'rv': 0}"
                 if val['payload'] == bytearray([1]): #for loop check
                     broken = True
                     gc.add("success")
