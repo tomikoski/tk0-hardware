@@ -56,7 +56,7 @@ if SS_VER == "SS_VER_1_1":
     target.baud = 38400*7.5/7.37
 
 scope.io.clkout = 7.5E6
-def reboot_flush():            
+def reboot_flush():
     scope.io.nrst = False
     time.sleep(0.05)
     scope.io.nrst = "high_z"
@@ -112,7 +112,6 @@ for glitch_setting in gc.glitch_values():
        scope.arm()
        #Do glitch loop
        target.simpleserial_write("g", bytearray([]))
-       #target.write("g\n")
        ret = scope.capture()
        val = target.simpleserial_read_witherrors('r', 4, glitch_timeout=10) #For loop check
        #print(val)
