@@ -106,7 +106,8 @@ for glitch_settings in gc.glitch_values():
     for i in range(50):
         #print("ext_offset {}, repeat {}".format(scope.glitch.ext_offset,scope.glitch.repeat)) # would show "progress"
         scope.arm()
-        target.simpleserial_write('p', bytearray([0]*5))        
+        target.simpleserial_write('p', bytearray([0]*5)) #SIMPLESERIAL1
+        #target.simpleserial_write('p', bytearray([0]*5)) #SIMPLESERIAL2 ????
         ret = scope.capture()
         
         if ret:
