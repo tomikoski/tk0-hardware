@@ -71,7 +71,7 @@ cw.set_all_log_levels(cw.logging.CRITICAL)
 #scope.glitch.repeat = 0
 
 #ORIG
-R#EPEAT_MIN=1
+#REPEAT_MIN=1
 #REPEAT_MAX=7
 #EXT_OFFSET_MIN=1
 #EXT_OFFSET_MAX=30
