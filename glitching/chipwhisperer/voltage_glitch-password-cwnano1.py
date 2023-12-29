@@ -104,7 +104,6 @@ for glitch_settings in gc.glitch_values():
         if ret:
             print('Timeout - no trigger')
             gc.add("reset")
-
             #Device is slow to boot?
             reboot_flush()
 
@@ -115,7 +114,10 @@ for glitch_settings in gc.glitch_values():
                 gc.add("reset")
                 reboot_flush()
             else:
-                #print(val) #SIMPLESERIAL1 => would print if not success: "{'valid': True, 'payload': bytearray(b'\x00'), 'full_response': 'r00\n', 'rv': 0}"
+                #SIMPLESERIAL1 => would print if not success: "{'valid': True, 'payload': bytearray(b'\x00'), 'full_response': 'r00\n', 'rv': 0}"
+                #SIMPLESERIAL2 => would print if not success: {'valid': True, 'payload': CWbytearray(b'00'), 'full_response': CWbytearray(b'00 72 01 00 99 00'), 'rv': bytearray(b'\x00')}
+                #print(val) 
+
                 if val['payload'] == bytearray([1]): #for loop check
                     broken = True
                     gc.add("success")
@@ -126,6 +128,9 @@ for glitch_settings in gc.glitch_values():
                     break
                 else:
                     gc.add("normal")
-                    
+
+# cleanup
+scope.dis()
+target.dis()                   
 cw.set_all_log_levels(cw.logging.WARNING)                    
 
