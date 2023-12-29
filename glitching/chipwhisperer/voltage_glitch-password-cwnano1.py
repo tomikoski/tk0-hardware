@@ -70,6 +70,12 @@ cw.set_all_log_levels(cw.logging.CRITICAL)
 #gc.set_range("ext_offset", 1, 30)
 #scope.glitch.repeat = 0
 
+#ORIG
+R#EPEAT_MIN=1
+#REPEAT_MAX=7
+#EXT_OFFSET_MIN=1
+#EXT_OFFSET_MAX=30
+
 #FULL SCALE
 REPEAT_MIN=1
 REPEAT_MAX=10
@@ -81,6 +87,8 @@ gc.set_global_step(g_step)
 gc.set_range("repeat", REPEAT_MIN, REPEAT_MAX)
 gc.set_range("ext_offset", EXT_OFFSET_MIN, EXT_OFFSET_MAX)
 scope.glitch.repeat = 0
+
+# sane defaults: https://chipwhisperer.readthedocs.io/en/latest/scope-api.html#chipwhisperer-nano-scope
 scope.vglitch_setup(glitcht=None, default_setup=True)
 
 reboot_flush()
