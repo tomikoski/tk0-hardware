@@ -1,7 +1,6 @@
 import chipwhisperer as cw
-from importlib import reload
+import matplotlib.pylab as plt
 import chipwhisperer.common.results.glitch as glitch
-from tqdm.notebook import trange
 import struct
 import time
 import warnings
@@ -69,20 +68,22 @@ gc = cw.GlitchController(groups=["success", "reset", "normal"], parameters=["rep
 gc.glitch_plot(plotdots={"success":"+g", "reset":"xr", "normal":None})
 
 
+REPEAT_MIN = 0
+REPEAT_MAX = 2
+EXT_OFFSET_MIN = 120
+EXT_OFFSET_MAX = 125
+
 gc.set_global_step(1)
 #gc.set_range("repeat", 1, 10)
 #gc.set_range("ext_offset", 0, 500)
-gc.set_range("repeat", 0, 2)
-gc.set_range("ext_offset", 120, 125)
-scope.glitch.repeat = 0
-
-
-#if SS_VER == "SS_VER_1_1":
-#    target.baud = 38400*7.5/7.37
-#target.baud = 230400
+gc.set_range("repeat", REPEAT_MIN, REPEAT_MAX)
+gc.set_range("ext_offset", EXT_OFFSET_MIN, EXT_OFFSET_MAX)
+scope.glitch.ext_offset = EXT_OFFSET_MIN
+scope.glitch.repeat = REPEAT_MIN
 
 print(scope)
 print("baud: {}\n\n".format(target.baud))
+print("offset: [{}-{}], repeat: [{}-{}]".format(EXT_OFFSET_MIN,EXT_OFFSET_MAX,REPEAT_MIN,REPEAT_MAX))
 
 reboot_flush()
 
@@ -102,7 +103,7 @@ for glitch_setting in gc.glitch_values():
        target.simpleserial_write("h", bytearray([0]*8))
        #target.simpleserial_write("h", bytearray([0]*16))
        #target.write("h0000000000000001\n")
-       #target.simpleserial_write("h", bytearray([])) # tulee tuloksia       
+
        ret = scope.capture()
        val = target.simpleserial_read_witherrors('r', 4, glitch_timeout=10)
        #print(val)
@@ -126,13 +127,13 @@ for glitch_setting in gc.glitch_values():
                    print(gcnt)
                    gc.add("success")
                    #print("resp: {}".format(val['full_response']))
-                   print("val: {}".format(val))
+                   print(val)
                    successes += 1
                else:
                    gc.add("normal")
    if successes > 0:                
         print("successes = {}, resets = {}, repeat = {}, ext_offset = {}".format(successes, resets, scope.glitch.repeat, scope.glitch.ext_offset))
-        #break
+        break
 
 end_time = datetime.now().strftime("%H:%M:%S")
 print("Done glitching, start: {}, end: {}".format(start_time,end_time))

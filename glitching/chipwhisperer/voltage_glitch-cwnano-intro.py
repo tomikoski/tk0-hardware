@@ -1,20 +1,15 @@
 import chipwhisperer as cw
-from importlib import reload
 import time
 import warnings
 from datetime import datetime
-from importlib import reload
-import chipwhisperer.common.results.glitch as glitch
-from tqdm.notebook import tqdm
-import re
 import struct
 import matplotlib.pylab as plt
 import chipwhisperer.common.results.glitch as glitch
 
 SCOPETYPE = 'CWNANO'
 PLATFORM = 'CWNANO'
-#SS_VER = 'SS_VER_2_1'
-SS_VER = 'SS_VER_1_1'
+SS_VER = 'SS_VER_2_1'
+#SS_VER = 'SS_VER_1_1'
 
 
 try:

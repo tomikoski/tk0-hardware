@@ -1,8 +1,6 @@
 import chipwhisperer as cw
 import matplotlib.pylab as plt
-from importlib import reload
 import chipwhisperer.common.results.glitch as glitch
-from tqdm.notebook import trange
 import struct
 import time
 import warnings
@@ -14,8 +12,12 @@ PLATFORM = 'CWNANO'
 #SS_VER = 'SS_VER_2_1'
 #SS_VER = 'SS_VER_1_1'
 
-SS_VER = sys.argv[1]
-print(SS_VER)
+if(len(sys.argv) < 2):
+    print("No param")
+    sys.exit(1)
+else:
+    SS_VER = sys.argv[1]
+    print(SS_VER)
 
 try:
     if not scope.connectStatus:
@@ -46,9 +48,7 @@ print("INFO: Found ChipWhisperer😍")
 
 time.sleep(0.05)
 scope.default_setup()
-
 scope.io.clkout = 7.5E6
-
 
 def reboot_flush():            
     scope.io.nrst = False
@@ -88,10 +88,9 @@ g_step = 1
 gc.set_global_step(g_step)
 gc.set_range("repeat", REPEAT_MIN, REPEAT_MAX)
 gc.set_range("ext_offset", EXT_OFFSET_MIN, EXT_OFFSET_MAX)
-scope.glitch.repeat = 0
-
-# sane defaults: https://chipwhisperer.readthedocs.io/en/latest/scope-api.html#chipwhisperer-nano-scope
-scope.vglitch_setup(glitcht=None, default_setup=True)
+scope.glitch.repeat = REPEAT_MIN
+scope.glitch.ext_offset = EXT_OFFSET_MIN
+#scope.adc.samples = 10000 # TEST
 
 reboot_flush()
 broken = False
@@ -101,17 +100,21 @@ print("baud = {}".format(target.baud))
 print("offset: [{}-{}], repeat: [{}-{}]".format(EXT_OFFSET_MIN,EXT_OFFSET_MAX,REPEAT_MIN,REPEAT_MAX))
 
 for glitch_settings in gc.glitch_values():
+    
     scope.glitch.repeat = glitch_settings[0]
     scope.glitch.ext_offset = glitch_settings[1]
+    
     if broken:
         break
+
     for i in range(50):
         #print("ext_offset {}, repeat {}".format(scope.glitch.ext_offset,scope.glitch.repeat)) # would show "progress"
         scope.arm()
         
-        #target.simpleserial_write('p', bytearray([ord('t'),ord('o'),ord('u'),ord('c'),ord('h')])) #SIMPLESERIAL1 PASS
-        target.simpleserial_write('p', bytearray([0]*5)) #SIMPLESERIAL1
-        #target.simpleserial_write(0x1, bytearray([0]*5)) #SIMPLESERIAL2
+        #target.simpleserial_write('p', bytearray([ord('t'),ord('o'),ord('u'),ord('c'),ord('h')])) #SIMPLESERIAL1 PASS        
+        #target.simpleserial_write('p', bytearray([0]*5)) #SIMPLESERIAL1
+        #target.simpleserial_write(0x1, bytearray([ord('t'),ord('o'),ord('u'),ord('c'),ord('h')])) #SIMPLESERIAL2 PASS
+        target.simpleserial_write(0x1, bytearray([0x46]*5)) #SIMPLESERIAL2
         
         ret = scope.capture()
         
@@ -122,16 +125,14 @@ for glitch_settings in gc.glitch_values():
             reboot_flush()
 
         else:
-            val = target.simpleserial_read_witherrors('r', 1, glitch_timeout=10) #For loop check
-            #print(val) 
-            if val['valid'] is False:
+            val = target.simpleserial_read_witherrors('r', 1, glitch_timeout=10, timeout=50)            
+            #SIMPLESERIAL1 => would print if not success: "{'valid': True, 'payload': bytearray(b'\x00'), 'full_response': 'r00\n', 'rv': 0}"
+            #SIMPLESERIAL2 => would print if not success: {'valid': True, 'payload': CWbytearray(b'00'), 'full_response': CWbytearray(b'00 72 01 00 99 00'), 'rv': bytearray(b'\x00')}
+            print(val)
+            if val['valid'] is False:            
                 gc.add("reset")
                 reboot_flush()
             else:
-                #SIMPLESERIAL1 => would print if not success: "{'valid': True, 'payload': bytearray(b'\x00'), 'full_response': 'r00\n', 'rv': 0}"
-                #SIMPLESERIAL2 => would print if not success: {'valid': True, 'payload': CWbytearray(b'00'), 'full_response': CWbytearray(b'00 72 01 00 99 00'), 'rv': bytearray(b'\x00')}
-                #print(val) 
-
                 if val['payload'] == bytearray([1]): #for loop check
                     broken = True
                     gc.add("success")

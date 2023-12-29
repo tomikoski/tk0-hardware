@@ -1,7 +1,6 @@
 import chipwhisperer as cw
-from importlib import reload
+import matplotlib.pylab as plt
 import chipwhisperer.common.results.glitch as glitch
-from tqdm.notebook import trange
 import struct
 import time
 import warnings
@@ -11,9 +10,13 @@ import sys
 SCOPETYPE = 'CWNANO'
 PLATFORM = 'CWNANO'
 #SS_VER = 'SS_VER_2_1'
-SS_VER = sys.argv[1]
 
-print(SS_VER)
+if(len(sys.argv) < 2):
+    print("No param")
+    sys.exit(1)
+else:
+    SS_VER = sys.argv[1]
+    print(SS_VER)
 
 try:
     if not scope.connectStatus:
