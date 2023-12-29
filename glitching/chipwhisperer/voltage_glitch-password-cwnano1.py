@@ -78,7 +78,7 @@ cw.set_all_log_levels(cw.logging.CRITICAL)
 #EXT_OFFSET_MIN=1
 #EXT_OFFSET_MAX=30
 
-#FULL SCALE
+#TEST VALUES
 REPEAT_MIN=1
 REPEAT_MAX=7
 EXT_OFFSET_MIN=1
@@ -117,7 +117,7 @@ for glitch_settings in gc.glitch_values():
 
         #SIMPLESERIAL2
         #target.simpleserial_write(0x1, bytearray([ord('t'),ord('o'),ord('u'),ord('c'),ord('h')])) #SIMPLESERIAL2 PASS
-        target.simpleserial_write(0x1, bytearray([0x41]*5)) #SIMPLESERIAL2        
+        target.simpleserial_write('p', bytearray([0x41]*5)) #SIMPLESERIAL2
         
         ret = scope.capture()
         
@@ -136,10 +136,10 @@ for glitch_settings in gc.glitch_values():
                 gc.add("reset")
                 reboot_flush()
             else:
+                print(val)
                 if val['payload'] == bytearray([1]): #for loop check
                     broken = True
                     gc.add("success")
-                    print(val)
                     print(val['payload'])
                     print(scope.glitch.repeat, scope.glitch.ext_offset)
                     print("🐙", end="")
