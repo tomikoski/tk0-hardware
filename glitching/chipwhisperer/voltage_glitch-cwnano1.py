@@ -79,14 +79,22 @@ cw.set_all_log_levels(cw.logging.CRITICAL)
 ###
 
 ###FULL SCALE
-gc.set_global_step(1)
-gc.set_range("repeat", 1, 10)
-gc.set_range("ext_offset", 0, 500)
-scope.glitch.repeat = 0
-###
+REPEAT_MIN=1
+REPEAT_MAX=7
+EXT_OFFSET_MIN=1
+EXT_OFFSET_MAX=200
+
+g_step = 1
+gc.set_global_step(g_step)
+gc.set_range("repeat", REPEAT_MIN, REPEAT_MAX)
+gc.set_range("ext_offset", EXT_OFFSET_MIN, EXT_OFFSET_MAX)
+scope.glitch.repeat = REPEAT_MIN
+scope.glitch.ext_offset = EXT_OFFSET_MIN
+#scope.adc.samples = 10000 # TEST
 
 print(scope)
 print("baud = {}".format(target.baud))
+print("offset: [{}-{}], repeat: [{}-{}]".format(EXT_OFFSET_MIN,EXT_OFFSET_MAX,REPEAT_MIN,REPEAT_MAX))
 
 reboot_flush()
 
@@ -103,8 +111,8 @@ for glitch_setting in gc.glitch_values():
        target.flush()
        scope.arm()
        #Do glitch loop
-       #target.simpleserial_write("g", bytearray([]))
-       target.write("g\n")
+       target.simpleserial_write("g", bytearray([]))
+       #target.write("g\n")
        ret = scope.capture()
        val = target.simpleserial_read_witherrors('r', 4, glitch_timeout=10) #For loop check
        #print(val)

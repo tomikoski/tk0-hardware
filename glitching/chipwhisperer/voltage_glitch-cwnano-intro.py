@@ -8,9 +8,15 @@ import chipwhisperer.common.results.glitch as glitch
 
 SCOPETYPE = 'CWNANO'
 PLATFORM = 'CWNANO'
-SS_VER = 'SS_VER_2_1'
+#SS_VER = 'SS_VER_2_1'
 #SS_VER = 'SS_VER_1_1'
 
+if(len(sys.argv) < 2):
+    print("No param")
+    sys.exit(1)
+else:
+    SS_VER = sys.argv[1]
+    print(SS_VER)
 
 try:
     if not scope.connectStatus:
