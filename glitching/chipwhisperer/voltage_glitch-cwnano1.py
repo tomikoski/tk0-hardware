@@ -49,6 +49,9 @@ print("INFO: Found ChipWhisperer😍")
 time.sleep(0.05)
 scope.default_setup()
 
+if SS_VER == "SS_VER_1_1":
+    target.baud = 38400*7.5/7.37
+
 scope.io.clkout = 7.5E6
 def reboot_flush():            
     scope.io.nrst = False
@@ -83,24 +86,22 @@ print(scope)
 print("baud = {}".format(target.baud))
 
 reboot_flush()
-sample_size = 1
 
-all_successes = ""
 start_time = datetime.now().strftime("%H:%M:%S")
 
 for glitch_setting in gc.glitch_values():
-
    scope.glitch.repeat = glitch_setting[0]
    scope.glitch.ext_offset = glitch_setting[1]
    successes = 0
    resets = 0
-   print("ext_offset = {:.3f}; repeat = {:.3f};".format(scope.glitch.ext_offset,scope.glitch.repeat))
+   #print("ext_offset = {:.3f}; repeat = {:.3f};".format(scope.glitch.ext_offset,scope.glitch.repeat))
 
-   for i in range(3):
+   for i in range(5):
        target.flush()
        scope.arm()
        #Do glitch loop
-       target.simpleserial_write("g", bytearray([]))
+       #target.simpleserial_write("g", bytearray([]))
+       target.write("g\n")
        ret = scope.capture()
        val = target.simpleserial_read_witherrors('r', 4, glitch_timeout=10) #For loop check
        #print(val)
@@ -108,8 +109,7 @@ for glitch_setting in gc.glitch_values():
        if ret:
            print('Timeout - no trigger')
            gc.add("reset")
-           resets += 1
-   
+           resets += 1   
            #Device is slow to boot?
            reboot_flush()
    
@@ -129,13 +129,10 @@ for glitch_setting in gc.glitch_values():
                    gc.add("normal")
    if successes > 0:                
         print("successes = {}, resets = {}, repeat = {}, ext_offset = {}".format(successes, resets, scope.glitch.repeat, scope.glitch.ext_offset))
-        all_successes += "successes = {}, resets = {}, repeat = {}, ext_offset = {}\n".format(successes, resets, scope.glitch.repeat, scope.glitch.ext_offset)
 
 end_time = datetime.now().strftime("%H:%M:%S")
 print("Done glitching, start: {}, end: {}".format(start_time,end_time))
 print("successes = {}, resets = {}".format(successes, resets))
-if successes > 0:
-   print("all_successes = {}".format(all_successes))
 
 scope.dis()
 target.dis()

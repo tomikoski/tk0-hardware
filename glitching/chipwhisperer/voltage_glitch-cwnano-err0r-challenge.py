@@ -76,6 +76,11 @@ gc.set_range("repeat", 0, 2)
 gc.set_range("ext_offset", 120, 125)
 scope.glitch.repeat = 0
 
+
+#if SS_VER == "SS_VER_1_1":
+#    target.baud = 38400*7.5/7.37
+#target.baud = 230400
+
 print(scope)
 print("baud: {}\n\n".format(target.baud))
 
@@ -94,10 +99,10 @@ for glitch_setting in gc.glitch_values():
        scope.arm()
        #Do glitch loop
        #target.simpleserial_write("h", bytearray([0]*4))
-       #target.simpleserial_write("h", bytearray([0]*8))
+       target.simpleserial_write("h", bytearray([0]*8))
        #target.simpleserial_write("h", bytearray([0]*16))
-       #target.write("h0000\n")
-       target.simpleserial_write("h", bytearray([])) # tulee tuloksia       
+       #target.write("h0000000000000001\n")
+       #target.simpleserial_write("h", bytearray([])) # tulee tuloksia       
        ret = scope.capture()
        val = target.simpleserial_read_witherrors('r', 4, glitch_timeout=10)
        #print(val)
@@ -127,7 +132,7 @@ for glitch_setting in gc.glitch_values():
                    gc.add("normal")
    if successes > 0:                
         print("successes = {}, resets = {}, repeat = {}, ext_offset = {}".format(successes, resets, scope.glitch.repeat, scope.glitch.ext_offset))
-        break
+        #break
 
 end_time = datetime.now().strftime("%H:%M:%S")
 print("Done glitching, start: {}, end: {}".format(start_time,end_time))

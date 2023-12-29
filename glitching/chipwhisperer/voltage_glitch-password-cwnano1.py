@@ -48,6 +48,8 @@ time.sleep(0.05)
 scope.default_setup()
 
 scope.io.clkout = 7.5E6
+
+
 def reboot_flush():            
     scope.io.nrst = False
     time.sleep(0.05)
@@ -78,9 +80,9 @@ cw.set_all_log_levels(cw.logging.CRITICAL)
 
 #FULL SCALE
 REPEAT_MIN=1
-REPEAT_MAX=10
+REPEAT_MAX=7
 EXT_OFFSET_MIN=1
-EXT_OFFSET_MAX=500
+EXT_OFFSET_MAX=30
 
 g_step = 1
 gc.set_global_step(g_step)
@@ -106,8 +108,11 @@ for glitch_settings in gc.glitch_values():
     for i in range(50):
         #print("ext_offset {}, repeat {}".format(scope.glitch.ext_offset,scope.glitch.repeat)) # would show "progress"
         scope.arm()
-        #target.simpleserial_write('p', bytearray([0]*5)) #SIMPLESERIAL1
-        target.simpleserial_write(0x1, bytearray([0]*5)) #SIMPLESERIAL2
+        
+        #target.simpleserial_write('p', bytearray([ord('t'),ord('o'),ord('u'),ord('c'),ord('h')])) #SIMPLESERIAL1 PASS
+        target.simpleserial_write('p', bytearray([0]*5)) #SIMPLESERIAL1
+        #target.simpleserial_write(0x1, bytearray([0]*5)) #SIMPLESERIAL2
+        
         ret = scope.capture()
         
         if ret:
@@ -118,7 +123,7 @@ for glitch_settings in gc.glitch_values():
 
         else:
             val = target.simpleserial_read_witherrors('r', 1, glitch_timeout=10) #For loop check
-            print(val) 
+            #print(val) 
             if val['valid'] is False:
                 gc.add("reset")
                 reboot_flush()
