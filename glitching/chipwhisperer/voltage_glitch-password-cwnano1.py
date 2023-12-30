@@ -99,7 +99,7 @@ broken = False
 
 print(scope)
 print("baud = {}".format(target.baud))
-print("offset: [{}-{}], repeat: [{}-{}]".format(EXT_OFFSET_MIN,EXT_OFFSET_MAX,REPEAT_MIN,REPEAT_MAX))
+print("offset: [{}-{}], repeat: [{}-{}], g_step: {}".format(EXT_OFFSET_MIN,EXT_OFFSET_MAX,REPEAT_MIN,REPEAT_MAX,g_step))
 
 
 for glitch_settings in gc.glitch_values():

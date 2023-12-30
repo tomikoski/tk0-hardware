@@ -114,7 +114,7 @@ scope.glitch.ext_offset = EXT_OFFSET_MIN
 
 print(scope)
 print("baud = {}".format(target.baud))
-print("offset: [{}-{}], repeat: [{}-{}]".format(EXT_OFFSET_MIN,EXT_OFFSET_MAX,REPEAT_MIN,REPEAT_MAX))
+print("offset: [{}-{}], repeat: [{}-{}], g_step: {}".format(EXT_OFFSET_MIN,EXT_OFFSET_MAX,REPEAT_MIN,REPEAT_MAX,g_step))
 start_time = datetime.now().strftime("%H:%M:%S")
 
 reboot_flush()

@@ -78,13 +78,21 @@ cw.set_all_log_levels(cw.logging.CRITICAL)
 #scope.glitch.repeat = 0
 ###
 
-###FULL SCALE
+###TESTING
+#REPEAT_MIN=1
+#REPEAT_MAX=10
+#EXT_OFFSET_MIN=1
+#EXT_OFFSET_MAX=100
+#g_step = 1
+
+###MOD REPO VALUES
 REPEAT_MIN=1
 REPEAT_MAX=170
 EXT_OFFSET_MIN=1
 EXT_OFFSET_MAX=550
+g_step = 5
 
-g_step = 1
+
 gc.set_global_step(g_step)
 gc.set_range("repeat", REPEAT_MIN, REPEAT_MAX)
 gc.set_range("ext_offset", EXT_OFFSET_MIN, EXT_OFFSET_MAX)
@@ -94,7 +102,7 @@ scope.glitch.ext_offset = EXT_OFFSET_MIN
 
 print(scope)
 print("baud = {}".format(target.baud))
-print("offset: [{}-{}], repeat: [{}-{}]".format(EXT_OFFSET_MIN,EXT_OFFSET_MAX,REPEAT_MIN,REPEAT_MAX))
+print("offset: [{}-{}], repeat: [{}-{}], g_step: {}".format(EXT_OFFSET_MIN,EXT_OFFSET_MAX,REPEAT_MIN,REPEAT_MAX,g_step))
 
 reboot_flush()
 
