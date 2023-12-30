@@ -101,6 +101,7 @@ print(scope)
 print("baud = {}".format(target.baud))
 print("offset: [{}-{}], repeat: [{}-{}]".format(EXT_OFFSET_MIN,EXT_OFFSET_MAX,REPEAT_MIN,REPEAT_MAX))
 
+
 for glitch_settings in gc.glitch_values():
     
     scope.glitch.repeat = glitch_settings[0]

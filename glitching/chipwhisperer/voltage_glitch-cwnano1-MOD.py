@@ -119,6 +119,8 @@ start_time = datetime.now().strftime("%H:%M:%S")
 
 reboot_flush()
 sample_size = 1
+all_successes = 0
+
 for glitch_setting in gc.glitch_values():
     target.flush()
     reboot_flush
@@ -162,6 +164,7 @@ for glitch_setting in gc.glitch_values():
                     print(val)
                     plt.plot(scope.glitch.ext_offset, scope.glitch.repeat, '+g', alpha=1)
                     successes += 1
+                    all_successes += 1
                 else:
                     gc.add("normal", (scope.glitch.repeat, scope.glitch.ext_offset))
                     
@@ -170,7 +173,7 @@ for glitch_setting in gc.glitch_values():
 
 end_time = datetime.now().strftime("%H:%M:%S")
 print("Done glitching, start: {}, end: {}".format(start_time,end_time))
-print("successes = {}, resets = {}".format(successes, resets))
+print("total successes = {}".format(all_successes))
 
 scope.dis()
 target.dis()
