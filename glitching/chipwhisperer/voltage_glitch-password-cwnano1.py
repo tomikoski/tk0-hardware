@@ -80,9 +80,9 @@ cw.set_all_log_levels(cw.logging.CRITICAL)
 
 #TEST VALUES
 REPEAT_MIN=1
-REPEAT_MAX=7
+REPEAT_MAX=3
 EXT_OFFSET_MIN=1
-EXT_OFFSET_MAX=30
+EXT_OFFSET_MAX=50
 
 g_step = 1
 gc.set_global_step(g_step)
@@ -117,7 +117,7 @@ for glitch_settings in gc.glitch_values():
 
         #SIMPLESERIAL2
         #target.simpleserial_write(0x1, bytearray([ord('t'),ord('o'),ord('u'),ord('c'),ord('h')])) #SIMPLESERIAL2 PASS
-        target.simpleserial_write('p', bytearray([0x41]*5)) #SIMPLESERIAL2
+        target.simpleserial_write('p', bytearray([0x41]*5)) # SIMPLESERIAL2
         
         ret = scope.capture()
         
@@ -128,15 +128,14 @@ for glitch_settings in gc.glitch_values():
             reboot_flush()
 
         else:
-            val = target.simpleserial_read_witherrors('r', 1, glitch_timeout=10, timeout=50)            
+            val = target.simpleserial_read_witherrors('r', 1, glitch_timeout=10)            
             #SIMPLESERIAL1 => would print if not success: "{'valid': True, 'payload': bytearray(b'\x00'), 'full_response': 'r00\n', 'rv': 0}"
             #SIMPLESERIAL2 => would print if not success: {'valid': True, 'payload': CWbytearray(b'00'), 'full_response': CWbytearray(b'00 72 01 00 99 00'), 'rv': bytearray(b'\x00')}
-            print(val)
+            #print(val)
             if val['valid'] is False:            
                 gc.add("reset")
                 reboot_flush()
-            else:
-                print(val)
+            else:             
                 if val['payload'] == bytearray([1]): #for loop check
                     broken = True
                     gc.add("success")

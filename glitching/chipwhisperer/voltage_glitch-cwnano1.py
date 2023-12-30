@@ -80,9 +80,9 @@ cw.set_all_log_levels(cw.logging.CRITICAL)
 
 ###FULL SCALE
 REPEAT_MIN=1
-REPEAT_MAX=7
+REPEAT_MAX=170
 EXT_OFFSET_MIN=1
-EXT_OFFSET_MAX=200
+EXT_OFFSET_MAX=550
 
 g_step = 1
 gc.set_global_step(g_step)
@@ -101,14 +101,16 @@ reboot_flush()
 start_time = datetime.now().strftime("%H:%M:%S")
 
 for glitch_setting in gc.glitch_values():
+   target.flush()
+   reboot_flush()
+
    scope.glitch.repeat = glitch_setting[0]
    scope.glitch.ext_offset = glitch_setting[1]
    successes = 0
    resets = 0
    #print("ext_offset = {:.3f}; repeat = {:.3f};".format(scope.glitch.ext_offset,scope.glitch.repeat))
 
-   for i in range(5):
-       target.flush()
+   for i in range(3):
        scope.arm()
        #Do glitch loop
        target.simpleserial_write("g", bytearray([]))
