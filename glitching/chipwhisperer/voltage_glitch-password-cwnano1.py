@@ -80,9 +80,9 @@ cw.set_all_log_levels(cw.logging.CRITICAL)
 
 #TEST VALUES
 REPEAT_MIN=1
-REPEAT_MAX=3
+REPEAT_MAX=10
 EXT_OFFSET_MIN=1
-EXT_OFFSET_MAX=50
+EXT_OFFSET_MAX=100
 
 g_step = 1
 gc.set_global_step(g_step)
@@ -91,6 +91,8 @@ gc.set_range("ext_offset", EXT_OFFSET_MIN, EXT_OFFSET_MAX)
 scope.glitch.repeat = REPEAT_MIN
 scope.glitch.ext_offset = EXT_OFFSET_MIN
 #scope.adc.samples = 10000 # TEST
+sample_size = 1
+scope.glitch.repeat = 0
 
 reboot_flush()
 broken = False
@@ -108,16 +110,17 @@ for glitch_settings in gc.glitch_values():
         break
 
     for i in range(50):
-        #print("ext_offset {}, repeat {}".format(scope.glitch.ext_offset,scope.glitch.repeat)) # would show "progress"
         scope.arm()
-
+        
         #SIMPLESERIAL1        
         #target.simpleserial_write('p', bytearray([ord('t'),ord('o'),ord('u'),ord('c'),ord('h')])) #SIMPLESERIAL1 PASS        
         #target.simpleserial_write('p', bytearray([0]*5)) #SIMPLESERIAL1
 
         #SIMPLESERIAL2
         #target.simpleserial_write(0x1, bytearray([ord('t'),ord('o'),ord('u'),ord('c'),ord('h')])) #SIMPLESERIAL2 PASS
-        target.simpleserial_write('p', bytearray([0x41]*5)) # SIMPLESERIAL2
+        target.simpleserial_write('p', bytearray([0x41]*5)) # SIMPLESERIAL2, for visuals: 'AAAAA'
+        #sends password 0x00 0x00 0x00 0x00 0x00  (not correct :) 
+        #target.simpleserial_write('p', bytearray([0]*5)) # SIMPLESERIAL2
         
         ret = scope.capture()
         
@@ -139,8 +142,9 @@ for glitch_settings in gc.glitch_values():
                 if val['payload'] == bytearray([1]): #for loop check
                     broken = True
                     gc.add("success")
+                    print(val)
                     print(val['payload'])
-                    print(scope.glitch.repeat, scope.glitch.ext_offset)
+                    print("repeat = {}, ext_offset = {}".format(scope.glitch.repeat, scope.glitch.ext_offset))
                     print("🐙", end="")
                     break
                 else:

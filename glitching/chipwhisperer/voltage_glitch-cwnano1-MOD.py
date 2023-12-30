@@ -100,7 +100,7 @@ cw.set_all_log_levels(cw.logging.CRITICAL)
 
 ###FULL SCALE
 REPEAT_MIN=1
-REPEAT_MAX=3
+REPEAT_MAX=10
 EXT_OFFSET_MIN=1
 EXT_OFFSET_MAX=100
 
@@ -156,9 +156,10 @@ for glitch_setting in gc.glitch_values():
                 resets += 1
             else:
                 gcnt = struct.unpack("<I", val['payload'])[0]                
-                if gcnt != 2500: #for loop check
+                if gcnt != 2500: #for loop check                    
                     gc.add("success", (scope.glitch.repeat, scope.glitch.ext_offset))
                     print(gcnt)
+                    print(val)
                     plt.plot(scope.glitch.ext_offset, scope.glitch.repeat, '+g', alpha=1)
                     successes += 1
                 else:
