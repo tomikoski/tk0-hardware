@@ -1,5 +1,15 @@
-# Setup chipwhisperer repos etc.
+# Setup chipwhisperer
 Setup battletested with Debian12, ackward reboots ahead.
+
+
+## Chipwhisperer NANO FYI!
+If you have CWNANO with 20ohm resistor, this modification is more or less mandatory:
+
+ ![CWNANO](images/hw_mod_physical.png)
+
+All information can be found from this repo: https://github.com/rlangoy/cwr_nano_vdd_glitching
+
+Cheers to __Rune Langøy__ for this awesome info!!!  
 
 ## env
 ```
