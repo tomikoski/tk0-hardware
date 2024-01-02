@@ -9,7 +9,11 @@ I've tried to glitch for 3-4 days without this modification and failed miserably
 
 All information can be found from this repo: https://github.com/rlangoy/cwr_nano_vdd_glitching
 
-Cheers to __Rune Langøy__ for this awesome info!!!  
+Cheers to __Rune Langøy__ for this awesome info!!!
+
+**NOTE**: Personally I did not have any 5.6ohm resistors available so had to improvise using parallel and serial circuit to achive my goal. My "setup" has 5.3-5.5ohm which seems to be okay'ish :)
+ 
+ ![CWNANO](images/personal_setup.png)
 
 ## env
 ```
