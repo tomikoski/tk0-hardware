@@ -1,6 +1,6 @@
 # Setup Chipwhisperer NANO
-reference: https://rtfm.newae.com/Capture/ChipWhisperer-Nano/
 Following setup battletested with Debian12, ackward reboots ahead. Also tested with M1 Macbook, no reboots.
+reference: https://rtfm.newae.com/Capture/ChipWhisperer-Nano/
 
 ## Chipwhisperer NANO FYI!
 I've tried to glitch for 3-4 days without this modification and failed miserably. Could not get any glitches using vanilla CWNANO board. Therefore I'm pretty convinced that if you have CWNANO and your R12 has 20ohm resistor -> this modification is more or less _mandatory_:
