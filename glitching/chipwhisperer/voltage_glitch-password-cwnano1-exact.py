@@ -72,8 +72,13 @@ print(val)
 reboot_flush()
 
 # should glitch <100 tries, YMMV
+# good known values so far:
+# 5,5
+# 5,9
+# 6,2
+# 5,11
 scope.glitch.repeat = 5
-scope.glitch.ext_offset = 11
+scope.glitch.ext_offset = 9
 broken = False
 count = 0
 
