@@ -1,5 +1,6 @@
-# Setup chipwhisperer
-Setup battletested with Debian12, ackward reboots ahead. Setup also tested with M1 Macbook, no reboots ahead.
+# Setup Chipwhisperer NANO
+reference: https://rtfm.newae.com/Capture/ChipWhisperer-Nano/
+Following setup battletested with Debian12, ackward reboots ahead. Also tested with M1 Macbook, no reboots.
 
 ## Chipwhisperer NANO FYI!
 I've tried to glitch for 3-4 days without this modification and failed miserably. Could not get any glitches using vanilla CWNANO board. Therefore I'm pretty convinced that if you have CWNANO and your R12 has 20ohm resistor -> this modification is more or less _mandatory_:
@@ -88,7 +89,7 @@ pip uninstall traitlets
 pip install traitlets==5.9.0
 ```
 
-## run jupyter notebook
+## Run jupyter notebook
 ```
 jupyter notebook
 ```
@@ -119,7 +120,7 @@ pip uninstall panel
 pip install panel
 ```
 
-## build firmwares
+## Build firmwares
 Linux:
 ```
 cd $GITROOT/hardware/victims/firmware/simpleserial-glitch/
@@ -134,7 +135,7 @@ brew install make
 /opt/homebrew/Cellar/make/4.4.1/libexec/gnubin/make PLATFORM=CWNANO CRYPTO_TARGET=NONE SS_VER='SS_VER_2_1' # at the time of writing, version was: 'GNU Make 4.4.1' 
 ```
 
-## Observations from glitching
+## Observations during glitching
 When running `python voltage_glitch-password-cwnano1-exact.py` I observed at least following values to be working (using the 20ohm modification), outputs:
 
 ```
