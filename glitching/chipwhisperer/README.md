@@ -80,8 +80,129 @@ pip install panel
 ```
 
 ## build firmwares
+Linux:
 ```
-cd $GITROOT/hardware/victims/firmware/simpleserial-base/
-make PLATFORM=CWNANO CRYPTO_TARGET=NONE S_VER=SS_VER_1_1 # SimpleSerial
+cd $GITROOT/hardware/victims/firmware/simpleserial-glitch/
+#make PLATFORM=CWNANO CRYPTO_TARGET=NONE S_VER=SS_VER_1_1 # SimpleSerial, should not be using this!
 make PLATFORM=CWNANO CRYPTO_TARGET=NONE S_VER=SS_VER_2_1 # SimpleSerial2
+```
+
+M1 (ARM) Macbook:
+```
+cd $GITROOT/hardware/victims/firmware/simpleserial-glitch/
+brew install make
+/opt/homebrew/Cellar/make/4.4.1/libexec/gnubin/make PLATFORM=CWNANO CRYPTO_TARGET=NONE SS_VER='SS_VER_2_1' # at the time of writing, version was: 'GNU Make 4.4.1' 
+```
+
+## Observations from glitching
+When running `python voltage_glitch-password-cwnano1-exact.py` I observed at least following values to be working (using the 20ohm modification), outputs:
+
+```
+repeat = 5, ext_offset = 5
+
+...
+
+repeat = 5, ext_offset = 9
+
+...
+
+repeat = 6, ext_offset = 2
+
+...
+(at this point I added more output)
+...
+
+
+1
+reset
+reset
+reset
+101
+success at 156
+{'valid': True, 'payload': CWbytearray(b'01'), 'full_response': CWbytearray(b'00 72 01 01 d4 00'), 'rv': bytearray(b'\x00')}
+CWbytearray(b'01')
+5 9
+
+...
+
+1
+reset
+reset
+reset
+reset
+101
+success at 124
+{'valid': True, 'payload': CWbytearray(b'01'), 'full_response': CWbytearray(b'00 72 01 01 d4 00'), 'rv': bytearray(b'\x00')}
+CWbytearray(b'01')
+5 9
+
+...
+
+
+1
+reset
+101
+reset
+201
+301
+reset
+401
+reset
+501
+success at 526
+{'valid': True, 'payload': CWbytearray(b'01'), 'full_response': CWbytearray(b'00 72 01 01 d4 00'), 'rv': bytearray(b'\x00')}
+CWbytearray(b'01')
+5 9
+
+...
+
+
+1
+success at 74
+{'valid': True, 'payload': CWbytearray(b'01'), 'full_response': CWbytearray(b'00 72 01 01 d4 00'), 'rv': bytearray(b'\x00')}
+CWbytearray(b'01')
+5 9
+
+...
+
+
+1
+101
+201
+301
+success at 345
+{'valid': True, 'payload': CWbytearray(b'01'), 'full_response': CWbytearray(b'00 72 01 01 d4 00'), 'rv': bytearray(b'\x00')}
+CWbytearray(b'01')
+5 9
+
+...
+
+
+1
+101
+success at 124
+{'valid': True, 'payload': CWbytearray(b'01'), 'full_response': CWbytearray(b'00 72 01 01 d4 00'), 'rv': bytearray(b'\x00')}
+CWbytearray(b'01')
+5 9
+
+...
+
+1
+101
+reset
+success at 167
+{'valid': True, 'payload': CWbytearray(b'01'), 'full_response': CWbytearray(b'00 72 01 01 d4 00'), 'rv': bytearray(b'\x00')}
+CWbytearray(b'01')
+5 9
+
+...
+
+1
+101
+success at 115
+{'valid': True, 'payload': CWbytearray(b'01'), 'full_response': CWbytearray(b'00 72 01 01 d4 00'), 'rv': bytearray(b'\x00')}
+CWbytearray(b'01')
+5 9
+
+...
 ```
