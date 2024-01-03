@@ -103,12 +103,14 @@ If you encounter jupyter errors like these:
 ...
 
 # M1 Macbook when running a python script, e.g. 'python voltage_glitch-cwnano1.py SS_VER_2_1'
+...
 Traceback (most recent call last):
   File "./git/tomi/tk0-hardware/glitching/chipwhisperer/voltage_glitch-cwnano1.py", line 69, in <module>
     gc.glitch_plot(plotdots={"success":"+g", "reset":"xr", "normal":None})
   File "/Users/tomi/Documents/git/chipwhisperer/software/chipwhisperer/common/results/glitch.py", line 203, in glitch_plot
     import holoviews as hv # type: ignore
     ^^^^^^^^^^^^^^^^^^^^^^
+...
 ```
 
 then just (will handle deps too):
