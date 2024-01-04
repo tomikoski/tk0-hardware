@@ -59,7 +59,7 @@ pip uninstall traitlets
 pip install traitlets==5.9.0
 ```
 
-## Setup env: M1 Macbook
+## Setup env: M1 (ARM) Macbook
 ```
 brew install libusb
 
