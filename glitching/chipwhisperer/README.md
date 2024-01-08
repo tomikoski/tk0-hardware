@@ -247,3 +247,55 @@ CWbytearray(b'01')
 
 ...
 ```
+
+## Observations during glitching using vanilla board, no HW modification
+This is what happens with CW NANO board which has original setup and invalid(?) 20ohm resistor:
+
+```
+python voltage_glitch-password-cwnano1-exact.py SS_VER_2_1
+SS_VER_2_1
+INFO: Found ChipWhisperer😍
+ChipWhisperer Nano Device
+fw_version = 
+    major = 0
+    minor = 66
+    debug = 0
+io = 
+    tio1         = None
+    tio2         = None
+    tio3         = None
+    tio4         = high_z
+    pdid         = True
+    pdic         = False
+    nrst         = True
+    clkout       = 7500000.0
+    cdc_settings = bytearray(b'\x01\x00\x00\x00')
+adc = 
+    clk_src  = int
+    clk_freq = 7500000.0
+    samples  = 5000
+glitch = 
+    repeat     = 0
+    ext_offset = 0
+errors = 
+    sam_errors      = False
+    sam_led_setting = Default
+
+baud = 230400
+Sanity check:
+{'valid': True, 'payload': CWbytearray(b'01'), 'full_response': CWbytearray(b'00 72 01 01 d4 00'), 'rv': bytearray(b'\x00')}
+1
+(ChipWhisperer Target WARNING|File SimpleSerial2.py:377) Unexpected start to command 82
+(ChipWhisperer Target WARNING|File SimpleSerial2.py:410) Unexpected length 69, 1
+reset
+(ChipWhisperer Target WARNING|File SimpleSerial2.py:377) Unexpected start to command 82
+(ChipWhisperer Target WARNING|File SimpleSerial2.py:410) Unexpected length 69, 1
+reset
+(ChipWhisperer Target WARNING|File SimpleSerial2.py:377) Unexpected start to command 82
+(ChipWhisperer Target WARNING|File SimpleSerial2.py:410) Unexpected length 69, 1
+reset
+...
+...
+...
+...continues forever and no glitches :(
+```
