@@ -18,7 +18,7 @@
 * http://www.jtagtest.com/pinouts/
 
 
-## My set of stuff
+## My (favorite) set of stuff
 - Proper soldering station AOYUE 968A (hot-air gun + soldering iron)
 - Oscilloscope Rigol DS1054 (all features can be activated with legal hack)
 - Logic Analyser Saleae (check their discounts for non-commercial use)
