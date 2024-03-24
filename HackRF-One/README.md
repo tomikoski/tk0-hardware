@@ -1,6 +1,6 @@
 # HackRF One
 
-## Monitor 433.920 (Weather stations, TPMS, etc.)
+## Monitor 433.920MHz (Weather stations, TPMS, etc.)
 ```
 rtl_433 -d 'device=hackrf' -g LNA=40,AMP=14,VGA=30 -s 250k
 ```
