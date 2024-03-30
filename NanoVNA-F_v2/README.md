@@ -7,5 +7,6 @@ Portable Vector Network Analyzer
 Lastly, `thru` is SMA to SMA -cable between PORT1 <-> PORT2
 
 ## References
-Manual: https://nanorfe.com/nanovna-v2-user-manual.html
+* [Official Manual](https://www.sysjoint.com/ueditor/php/upload/file/PDF/NanoVNA-F%20V2%20Portable%20Vector%20Network%20Analyzer%20User%20Guide%20V2.0.pdf) 
+* Alternative Manual: https://nanorfe.com/nanovna-v2-user-manual.html
 
