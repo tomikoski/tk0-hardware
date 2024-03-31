@@ -11,4 +11,4 @@ Lastly, `thru` is SMA to SMA -cable between PORT1 <-> PORT2
 * Alternative Manual: https://nanorfe.com/nanovna-v2-user-manual.html
 * [Good theory behind calibration and device](https://www.youtube.com/watch?v=_pjcEKQY_Tk)
 * [Very good "how-to" video](https://www.youtube.com/watch?v=dOnhdWGvz7k)
-* [Calibration 1-2-3 for NanoVNA-F V2](https://www.youtube.com/watch?v=LfGzf1_g2_c)
+* [Calibration 1-2-3 for NanoVNA-F (applies also to new one)](https://www.youtube.com/watch?v=LfGzf1_g2_c)
