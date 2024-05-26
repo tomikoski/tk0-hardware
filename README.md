@@ -63,3 +63,4 @@ How to build TAMARIN CABLE firmware from scratch
 * flashrom: https://www.riverloopsecurity.com/blog/2021/07/flashrom/
 * (SDR) Signal wiki: https://www.sigidwiki.com/wiki/Signal_Identification_Guide
 * Tamarin Cable: https://github.com/stacksmashing/tamarin-firmware/tree/main
+* [Spotify reveng thing, Github](https://github.com/err4o4/spotify-car-thing-reverse-engineering)
