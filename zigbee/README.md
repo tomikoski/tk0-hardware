@@ -10,3 +10,7 @@ Various Zigbee stuff
 * Raspberry PI 4
 * Setup wiring
 * Flash PACKET-SNIFFER (from TI)
+
+### Wiring
+* ref: https://lemariva.com/blog/2019/08/zigbee-flashing-cc2531-using-raspberry-pi-without-cc-debugger
+![wiring.png](images/wiring.png)
