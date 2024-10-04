@@ -30,7 +30,7 @@ git clone https://github.com/aircrack-ng/rtl8812au.git
 cd rtl8812au
 
 # important part for working version!!!
-sudo git checkout 63cf0b4
+git checkout 63cf0b4
 
 make
 sudo insmod 8812au.ko
