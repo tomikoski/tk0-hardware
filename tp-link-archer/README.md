@@ -46,4 +46,7 @@ sudo depmod
 
 # if works, we can install it:
 sudo make dkms_install
+
+# remove if needed with:
+sudo make dkms_remove
 ```
