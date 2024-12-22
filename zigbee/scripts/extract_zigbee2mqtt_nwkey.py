@@ -7,7 +7,7 @@ with open("/opt/zigbee2mqtt/data/configuration.yaml") as stream:
         print(y['advanced']['network_key'])
         h = ""
         for x in y['advanced']['network_key']:
-            h += hex(x).lstrip("0x") + ":"
+            h += f'{x:02x}:'
         print("HEX")
         print(h[:-1])
     except yaml.YAMLError as exc:
