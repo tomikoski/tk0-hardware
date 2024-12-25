@@ -7,6 +7,7 @@ from whad.exceptions import WhadDeviceNotFound
 from scapy.compat import raw
 from random import randint
 import sys
+import binascii
 
 if __name__ == '__main__':
     if len(sys.argv) >= 2:
@@ -44,7 +45,8 @@ if __name__ == '__main__':
             selected_network.join()
             try:
                 # Display the network key
-                print("[i] Network key:", selected_network.network_key)
+                print("[i] Network key (txt):", selected_network.network_key)
+                print("[i] Network key (hex):", binascii.hexlify(selected_network.network_key,":"))
 
                 # Discover the nodes in the network
                 devices = selected_network.discover()
