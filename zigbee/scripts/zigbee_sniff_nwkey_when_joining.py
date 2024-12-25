@@ -55,14 +55,19 @@ if __name__ == '__main__':
 
                 # For each device, iterate over the available endpoints & search for a ZCL input cluster
                 for device in selected_network.nodes:
-                    for endpoint in device.endpoints:
-                        if endpoint.profile_id == 0x0104 and 6 in endpoint.input_clusters:
-                            onoff = endpoint.attach_to_input_cluster(6)
-                            while True:
-                                # Manipulate the ZCL On Off API
-                                input()
-                                print("[i] lightbulb toggled")
-                                onoff.toggle()
+                    try:
+                       for endpoint in device.endpoints:
+                           print("[i] Profile found: " + endpoint.profile_id)
+                           if endpoint.profile_id == 0x0104 and 6 in endpoint.input_clusters:
+                               onoff = endpoint.attach_to_input_cluster(6)
+                               while True:
+                                   # Manipulate the ZCL On Off API
+                                   input()
+                                   print("[i] lightbulb toggled")
+                                   onoff.toggle()
+                    except:
+                       print("[-] Error occured with device enum: ", device)
+                       pass
 
             except KeyboardInterrupt:
                 selected_network.leave()
