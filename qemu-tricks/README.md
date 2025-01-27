@@ -26,3 +26,4 @@ qemu-system-mips -M malta \
 
 ## Useful links
 * https://markuta.com/how-to-build-a-mips-qemu-image-on-debian/
+* https://www.zerodayinitiative.com/blog/2020/5/27/mindshare-how-to-just-emulate-it-with-qemu
