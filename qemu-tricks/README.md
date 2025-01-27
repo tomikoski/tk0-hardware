@@ -1,7 +1,6 @@
 # QEMU tricks
 Random stuff related to QEMU emulation.
 
-
 ## MIPS32 (MIPS-I aka "Malta")
 Before starting, change `dist` and `vmlinuz-VERSION-4kc-malta` accordingly. During writeup:
 ```
@@ -23,6 +22,10 @@ qemu-system-mips -M malta \
   -append "console=ttyS0 nokaslr" \
   -nographic
 ```
+
+## Pre-built images
+* https://people.debian.org/~aurel32/qemu/mipsel/
+* https://blahcat.github.io/2017/06/25/qemu-images-to-play-with/
 
 ## Useful links
 * https://markuta.com/how-to-build-a-mips-qemu-image-on-debian/
