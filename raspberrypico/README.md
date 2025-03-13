@@ -1,7 +1,8 @@
 # Raspberry pico
-Using serprog
 
-## Building
+
+## Using serprog
+Building
 
 ```
 git clone https://github.com/stacksmashing/pico-serprog
@@ -20,4 +21,16 @@ make
 
 # reboot pico with reset pressed and install into pico
 cp pico_serprog.uf2 /Volumes/RPI-RP2
+```
+
+## Using pico-uart (serial)
+Building
+
+```
+git clone https://github.com/Noltari/pico-uart-bridge
+cd pico-uart-bridge
+bash ./build.sh
+
+# reboot pico with reset pressed and install into pico
+cp build/uart_bridge.uf2 /Volumes/RPI-RP2
 ```
