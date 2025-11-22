@@ -20,7 +20,7 @@
 
 ## My (favorite) set of stuff
 - Proper soldering station Thermaltronics TMT-9000S-2 with selection of tips; M6MF375, M6C300, M7BV010
-- Airhot gun YIHUA 858D (any cheap will do basically)
+- Hotair gun YIHUA 858D (any cheap will do basically)
 - Oscilloscope Rigol DS1054 (all features can be activated with legal hack)
 - Logic Analyser Saleae (check their discounts for non-commercial use)
 - Logic Analyser from China: https://www.aliexpress.com/item/1005005867189638.html
